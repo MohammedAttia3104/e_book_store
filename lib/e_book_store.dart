@@ -1,6 +1,6 @@
 import 'package:e_book_store/core/routing/app_router.dart';
 import 'package:e_book_store/core/routing/routes.dart';
-import 'package:e_book_store/features/home/home_screen.dart';
+import 'package:e_book_store/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class EBookStore extends StatelessWidget {
