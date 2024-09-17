@@ -81,6 +81,8 @@ dev_dependencies:
   json_serializable: ^6.8.0
   #A build system for Dart code generation and modular compilation
   build_runner:
+  # for Testing Bloc States
+  bloc_test: ^9.1.7
 
 
 
