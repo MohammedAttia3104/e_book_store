@@ -1,0 +1,9 @@
+flutter_native_splash:
+  # IOS && Android below 12-
+  color: "#EF5A5A"
+  image: assets/images/alpha_logo.png
+
+  # Android 12+
+  android_12:
+    image: assets/images/alpha_logo_android12.png
+    color: "#EF5A5A"
