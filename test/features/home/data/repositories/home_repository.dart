@@ -21,7 +21,6 @@ import '../data_sources/home_remote_data_source_test.mocks.dart';
 void main() {
   late MockHomeRemoteDataSource mockHomeRemoteDataSource;
   late HomeRepository homeRepository;
-  late Dio mockDio;
   late BooksModel booksModel;
   const String query = "computer science";
   const String filtering = "free-ebooks";
@@ -31,7 +30,6 @@ void main() {
     homeRepository = HomeRepositoryImpl(
       remoteDataSource: mockHomeRemoteDataSource,
     );
-    mockDio = Dio();
     booksModel = BooksModel(
       kind: "books#volumes",
       totalItems: 550,
@@ -99,6 +97,24 @@ void main() {
     final ApiResult<BooksModel> result =
         await homeRepository.getFreeBooks(query, filtering);
 
+    final success = result as Success<BooksModel>;
     expect(result, isA<ApiResult<BooksModel>>());
+    expect(success.data, booksModel);
+  });
+
+  test("Get Free Books should return Failure on error", () async {
+    when(mockHomeRemoteDataSource.getFreeBooks(query, filtering))
+        .thenThrow(DioException(
+      requestOptions: RequestOptions(path: ''),
+      type: DioExceptionType.badResponse,
+    ));
+
+    final ApiResult<BooksModel> result =
+        await homeRepository.getFreeBooks(query, filtering);
+
+    final failure = result as Failure<BooksModel>;
+
+    expect(result, isA<ApiResult<BooksModel>>());
+    expect(failure.message, isNotNull);
   });
 }
