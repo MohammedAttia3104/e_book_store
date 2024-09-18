@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/di/service_locator.dart';
+import 'core/theming/app_themes.dart';
 import 'features/home/presentation/controllers/home_cubit.dart';
 
 class EBookStore extends StatelessWidget {
@@ -15,16 +16,16 @@ class EBookStore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeCubit>(
-      create: (_) => sl<HomeCubit>()
-          ..getFreeBooks("computer science", "free-ebooks"),      child: MaterialApp(
+      create: (_) =>
+          sl<HomeCubit>()..getFreeBooks("computer science", "free-ebooks"),
+      child: MaterialApp(
         initialRoute: Routes.homeScreen,
         onGenerateRoute: appRouter.generateRoute,
         navigatorObservers: [NavigatorObserver()],
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: lightTheme,
+        darkTheme: darkTheme,
+        themeMode: ThemeMode.system,
         home: const HomeScreen(),
       ),
     );
