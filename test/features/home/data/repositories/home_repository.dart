@@ -82,9 +82,9 @@ void main() {
             accessViewStatus: "",
             quoteSharingAllowed: false,
           ),
-          searchInfo: SearchInfo(
-            textSnippet: "",
-          ),
+          // searchInfo: SearchInfo(
+          //   textSnippet: "",
+          // ),
         ),
       ],
     );

@@ -7,7 +7,7 @@ class SaleInfoListPrice {
   @JsonKey(name: "amount")
   final double amount;
   @JsonKey(name: "currencyCode")
-  final String currencyCode;
+  final String? currencyCode;
 
   SaleInfoListPrice({
     required this.amount,

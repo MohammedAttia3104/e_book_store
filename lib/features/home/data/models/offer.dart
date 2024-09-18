@@ -25,9 +25,9 @@ class Offer {
 @JsonSerializable()
 class OfferListPrice {
   @JsonKey(name: "amountInMicros")
-  final int amountInMicros;
+  final int? amountInMicros;
   @JsonKey(name: "currencyCode")
-  final String currencyCode;
+  final String? currencyCode;
 
   OfferListPrice({
     required this.amountInMicros,
@@ -35,6 +35,4 @@ class OfferListPrice {
   });
 
   factory OfferListPrice.fromJson(Map<String, dynamic> json) => _$OfferListPriceFromJson(json);
-
-  Map<String, dynamic> toJson() => _$OfferListPriceToJson(this);
 }

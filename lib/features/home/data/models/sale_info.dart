@@ -1,5 +1,5 @@
+import 'dart:core';
 import 'package:json_annotation/json_annotation.dart';
-
 import 'offer.dart';
 import 'sale_info_list_price.dart';
 
@@ -8,9 +8,9 @@ part 'sale_info.g.dart';
 @JsonSerializable()
 class SaleInfo {
   @JsonKey(name: "country")
-  final String country;
+  final String? country;
   @JsonKey(name: "saleability")
-  final String saleability;
+  final String? saleability;
   @JsonKey(name: "isEbook")
   final bool isEbook;
   @JsonKey(name: "listPrice")
@@ -34,5 +34,4 @@ class SaleInfo {
 
   factory SaleInfo.fromJson(Map<String, dynamic> json) =>
       _$SaleInfoFromJson(json);
-
 }

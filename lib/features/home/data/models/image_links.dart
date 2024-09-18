@@ -5,13 +5,13 @@ part 'image_links.g.dart';
 @JsonSerializable()
 class ImageLinks {
   @JsonKey(name: "smallThumbnail")
-  final String smallThumbnail;
+  final String? smallThumbnail;
   @JsonKey(name: "thumbnail")
-  final String thumbnail;
+  final String? thumbnail;
 
   ImageLinks({
-    required this.smallThumbnail,
-    required this.thumbnail,
+    this.smallThumbnail,
+    this.thumbnail,
   });
 
   factory ImageLinks.fromJson(Map<String, dynamic> json) => _$ImageLinksFromJson(json);

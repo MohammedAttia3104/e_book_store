@@ -3,20 +3,19 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'books_model.g.dart';
 
-
 @JsonSerializable()
 class BooksModel {
   @JsonKey(name: "kind")
-  final String kind;
+  final String? kind;
   @JsonKey(name: "totalItems")
-  final int totalItems;
+  final int? totalItems;
   @JsonKey(name: "items")
-  final List<BookItemModel> items;
+  final List<BookItemModel>? items;
 
   BooksModel({
-    required this.kind,
-    required this.totalItems,
-    required this.items,
+    this.kind,
+    this.totalItems,
+    this.items,
   });
 
   factory BooksModel.fromJson(Map<String, dynamic> json) => _$BooksModelFromJson(json);
