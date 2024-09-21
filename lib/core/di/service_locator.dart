@@ -4,6 +4,7 @@ import 'package:get_it/get_it.dart';
 import '../../features/home/data/data_sources/home_remote_data_source.dart';
 import '../../features/home/data/repositories/home_repository.dart';
 import '../../features/home/presentation/controllers/home_cubit.dart';
+import '../theming/controllers/app_theme_cubit.dart';
 
 final GetIt sl = GetIt.instance;
 
@@ -15,5 +16,8 @@ void setUpServiceLocator() {
       () => HomeRepositoryImpl(remoteDataSource: sl()));
   sl.registerLazySingleton<HomeRemoteDataSource>(
       () => HomeRemoteDataSource(sl()));
-  sl.registerLazySingleton<HomeCubit>(() => HomeCubit(sl()));
+  sl.registerFactory<HomeCubit>(() => HomeCubit(sl()));
+
+  //theme cubit
+  sl.registerFactory<AppThemeCubit>(() => AppThemeCubit());
 }
