@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
                 const HomeWelcomeBody(),
                 const HomeSearchView(),
                 const HomeRecentlyAddedBooks(),
+                verticalSpace(30),
               ],
             ),
           ),

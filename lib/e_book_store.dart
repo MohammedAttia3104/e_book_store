@@ -23,11 +23,10 @@ class EBookStore extends StatelessWidget {
       providers: [
         BlocProvider<HomeCubit>(
           create: (_) =>
-          sl<HomeCubit>()..getFreeBooks("computer science", "free-ebooks"),
+              sl<HomeCubit>()..getFreeBooks("computer science", "free-ebooks"),
         ),
         BlocProvider<AppThemeCubit>(
-          create: (context) =>
-          AppThemeCubit()..changeAppTheme(ThemeState.initial),
+          create: (_) => AppThemeCubit()..changeAppTheme(ThemeState.initial),
         ),
       ],
       child: ScreenUtilInit(
