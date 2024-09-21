@@ -1,3 +1,5 @@
+import 'package:e_book_store/core/extensions/navigation_extension.dart';
+import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
 import 'package:e_book_store/features/home/data/models/books_model.dart';
@@ -67,6 +69,7 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
               itemTitle: books.items?[index].volumeInfo.title,
               itemAuthor: books.items?[index].volumeInfo.authors,
               itemDescription: books.items?[index].volumeInfo.description,
+              itemId: books.items?[index].id,
             );
           },
           separatorBuilder: (context, index) {
