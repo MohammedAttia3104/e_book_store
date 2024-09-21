@@ -1,7 +1,10 @@
 import 'package:e_book_store/core/routing/routes.dart';
+import 'package:e_book_store/features/home/presentation/controllers/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home/home_screen.dart';
+import '../../features/home/presentation/home_screen.dart';
+import '../di/service_locator.dart';
 
 class AppRouter {
   Route? generateRoute(RouteSettings settings) {
