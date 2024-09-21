@@ -33,4 +33,10 @@ class AppStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColors.darkBlue,
   );
+
+  static TextStyle font24BlackBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primaryLightColor,
+  );
 }

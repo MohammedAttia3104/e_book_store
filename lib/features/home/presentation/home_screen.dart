@@ -1,3 +1,4 @@
+import 'package:e_book_store/features/home/presentation/widgets/home_recently_added_books.dart';
 import 'package:e_book_store/features/home/presentation/widgets/home_search_view.dart';
 import 'package:e_book_store/features/home/presentation/widgets/home_welcome_body.dart';
 import 'package:e_book_store/features/home/presentation/widgets/home_app_bar.dart';
@@ -24,6 +25,7 @@ class HomeScreen extends StatelessWidget {
                 verticalSpace(30),
                 const HomeWelcomeBody(),
                 const HomeSearchView(),
+                const HomeRecentlyAddedBooks(),
               ],
             ),
           ),
