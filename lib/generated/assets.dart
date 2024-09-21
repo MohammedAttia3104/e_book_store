@@ -2,7 +2,6 @@
 class Assets {
   Assets._();
 
-  static const String images11 = 'assets/images/11.jpg';
   static const String imagesAlphaLogo = 'assets/images/alpha_logo.png';
   static const String imagesAlphaLogoAndroid12 = 'assets/images/alpha_logo_android12.png';
   static const String imagesDemo = 'assets/images/demo.png';

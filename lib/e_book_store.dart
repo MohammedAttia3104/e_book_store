@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/di/service_locator.dart';
-import 'core/enums/theme_state.dart';
+import 'core/enums/theme_states.dart';
 import 'core/theming/app_themes.dart';
 import 'features/home/presentation/controllers/home_cubit.dart';
 

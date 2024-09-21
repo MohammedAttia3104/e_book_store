@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_book_store/core/enums/theme_state.dart';
+import 'package:e_book_store/core/enums/theme_states.dart';
 import 'package:e_book_store/core/helpers/shared_prefs_helper.dart';
 import 'package:e_book_store/core/helpers/shared_prefs_keys.dart';
 
