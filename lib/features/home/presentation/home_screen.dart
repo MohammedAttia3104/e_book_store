@@ -1,13 +1,10 @@
-import 'package:e_book_store/core/theming/app_strings.dart';
-import 'package:e_book_store/core/theming/app_styles.dart';
-import 'package:e_book_store/features/home/presentation/controllers/home_cubit.dart';
+import 'package:e_book_store/features/home/presentation/widgets/home_search_view.dart';
+import 'package:e_book_store/features/home/presentation/widgets/home_welcome_body.dart';
 import 'package:e_book_store/features/home/presentation/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/utils/spacing.dart';
-import 'controllers/home_state.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -25,6 +22,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 const HomeAppBar(),
                 verticalSpace(30),
+                const HomeWelcomeBody(),
+                const HomeSearchView(),
               ],
             ),
           ),
