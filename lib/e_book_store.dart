@@ -3,6 +3,7 @@ import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/features/home/presentation/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/di/service_locator.dart';
 import 'core/theming/app_themes.dart';
@@ -18,15 +19,18 @@ class EBookStore extends StatelessWidget {
     return BlocProvider<HomeCubit>(
       create: (_) =>
           sl<HomeCubit>()..getFreeBooks("computer science", "free-ebooks"),
-      child: MaterialApp(
-        initialRoute: Routes.homeScreen,
-        onGenerateRoute: appRouter.generateRoute,
-        navigatorObservers: [NavigatorObserver()],
-        debugShowCheckedModeBanner: false,
-        theme: lightTheme,
-        darkTheme: darkTheme,
-        themeMode: ThemeMode.system,
-        home: const HomeScreen(),
+      child: ScreenUtilInit(
+        designSize: const Size(428, 926),
+        child: MaterialApp(
+          initialRoute: Routes.homeScreen,
+          onGenerateRoute: appRouter.generateRoute,
+          navigatorObservers: [NavigatorObserver()],
+          debugShowCheckedModeBanner: false,
+          theme: lightTheme,
+          darkTheme: darkTheme,
+          themeMode: ThemeMode.system,
+          home: const HomeScreen(),
+        ),
       ),
     );
   }

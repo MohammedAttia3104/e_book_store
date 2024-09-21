@@ -10,5 +10,4 @@ class Assets {
   static const String svgsSearch = 'assets/svgs/search.svg';
   static const String svgsSetting = 'assets/svgs/setting.svg';
   static const String svgsView = 'assets/svgs/view.svg';
-
 }
