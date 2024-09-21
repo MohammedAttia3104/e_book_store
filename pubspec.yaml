@@ -65,6 +65,8 @@ dependencies:
   google_fonts: ^6.2.1
   #
   fancy_shimmer_image: ^2.0.3
+  # save data locally as key-value pairs
+  shared_preferences: ^2.3.2
 
 
 
