@@ -22,8 +22,10 @@ void main() {
   late MockHomeRemoteDataSource mockHomeRemoteDataSource;
   late HomeRepository homeRepository;
   late BooksModel booksModel;
-  const String query = "computer science";
-  const String filtering = "free-ebooks";
+  const String subject = "subject:Computer";
+  const String orderBy = "newest";
+  int maxResults = 10;
+  int startIndex = 0;
 
   setUp(() {
     mockHomeRemoteDataSource = MockHomeRemoteDataSource();
@@ -91,26 +93,46 @@ void main() {
   });
 
   test("Get Free Books should return Success with Books Model", () async {
-    when(mockHomeRemoteDataSource.getFreeBooks(query, filtering))
-        .thenAnswer((_) async => Future.value(booksModel));
+    when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
+            subject, startIndex, maxResults, orderBy))
+        .thenAnswer((_) async => booksModel);
 
     final ApiResult<BooksModel> result =
-        await homeRepository.getFreeBooks(query, filtering);
+        await homeRepository.getRecentlyAddedComputerBooks(
+      RecentlyAddedBooksParameters(
+        subject: subject,
+        startIndex: startIndex,
+        maxResults: maxResults,
+        orderBy: orderBy,
+      ),
+    );
 
     final success = result as Success<BooksModel>;
+
     expect(result, isA<ApiResult<BooksModel>>());
     expect(success.data, booksModel);
   });
 
   test("Get Free Books should return Failure on error", () async {
-    when(mockHomeRemoteDataSource.getFreeBooks(query, filtering))
-        .thenThrow(DioException(
-      requestOptions: RequestOptions(path: ''),
-      type: DioExceptionType.badResponse,
-    ));
+    final DioError dioError = DioError(
+      requestOptions: RequestOptions(path: "path"),
+      response: Response(
+        requestOptions: RequestOptions(path: "path"),
+        statusCode: 404,
+      ),
+    );
 
-    final ApiResult<BooksModel> result =
-        await homeRepository.getFreeBooks(query, filtering);
+    when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
+            subject, startIndex, maxResults, orderBy))
+        .thenThrow(dioError);
+
+    final ApiResult<BooksModel> result = await homeRepository
+        .getRecentlyAddedComputerBooks(RecentlyAddedBooksParameters(
+      subject: subject,
+      startIndex: startIndex,
+      maxResults: maxResults,
+      orderBy: orderBy,
+    ));
 
     final failure = result as Failure<BooksModel>;
 

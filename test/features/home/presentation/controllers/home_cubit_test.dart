@@ -90,28 +90,42 @@ void main() {
   blocTest<HomeCubit, HomeState>(
     'emits [freeBookLoadingState, freeBookLoadedState] when getFreeBooks is successful',
     build: () {
-      when(mockHomeRepository.getFreeBooks(any, any))
+      when(mockHomeRepository.getRecentlyAddedComputerBooks(any))
           .thenAnswer((_) async => ApiResult.success(booksModel));
       return homeCubit;
     },
-    act: (cubit) => cubit.getFreeBooks("computer science", "free-ebooks"),
+    act: (cubit) => cubit.getRecentlyAddedBooks(
+      RecentlyAddedBooksParameters(
+        subject: 'subject:' "\"Computers\"",
+        startIndex: 0,
+        maxResults: 20,
+        orderBy: 'newest',
+      ),
+    ),
     expect: () => [
-      const HomeState.freeBookLoadingState(),
-      HomeState.freeBookLoadedState(booksModel),
+      const HomeState.recentlyAddedBooksLoadingState(),
+      HomeState.recentlyAddedBooksSuccessState(booksModel),
     ],
   );
 
   blocTest<HomeCubit, HomeState>(
     'emits [freeBookLoadingState, freeBookErrorState] when getFreeBooks fails',
     build: () {
-      when(mockHomeRepository.getFreeBooks(any, any))
+      when(mockHomeRepository.getRecentlyAddedComputerBooks(any))
           .thenAnswer((_) async => const ApiResult.failure("Error occurred"));
       return homeCubit;
     },
-    act: (cubit) => cubit.getFreeBooks("computer science", "free-ebooks"),
+    act: (cubit) => cubit.getRecentlyAddedBooks(
+      RecentlyAddedBooksParameters(
+        subject: 'subject:' "\"Computers\"",
+        startIndex: 0,
+        maxResults: 20,
+        orderBy: 'newest',
+      ),
+    ),
     expect: () => [
-      const HomeState.freeBookLoadingState(),
-      const HomeState.freeBookErrorState("Error occurred"),
+      const HomeState.recentlyAddedBooksLoadingState(),
+      const HomeState.recentlyAddedBooksErrorState("Error occurred"),
     ],
   );
 }

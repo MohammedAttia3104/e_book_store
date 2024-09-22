@@ -15,22 +15,22 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       buildWhen: (previous, current) =>
-          current is FreeBookLoadingState ||
-          current is FreeBookLoadedState ||
-          current is FreeBookErrorState,
+          current is RecentlyAddedBooksErrorState ||
+          current is RecentlyAddedBooksLoadingState ||
+          current is RecentlyAddedBooksSuccessState,
       builder: (context, state) {
         return state.when(
-          freeBookLoadingState: () {
-            return _showRecentlyAddedBooksLoadingState();
-          },
-          freeBookLoadedState: (books) {
-            return _showRecentlyAddedBooksData(books);
-          },
-          freeBookErrorState: (message) {
-            return _showRecentlyAddedBooksErrorState(message);
-          },
           initial: () {
             return _showRecentlyAddedBooksLoadingState();
+          },
+          recentlyAddedBooksLoadingState: () {
+            return _showRecentlyAddedBooksLoadingState();
+          },
+          recentlyAddedBooksSuccessState: (BooksModel books) {
+            return _showRecentlyAddedBooksData(books);
+          },
+          recentlyAddedBooksErrorState: (message) {
+            return _showRecentlyAddedBooksErrorState(message);
           },
         );
       },
