@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/service_locator.dart';
 import 'core/enums/theme_states.dart';
 import 'core/theming/app_themes.dart';
+import 'features/home/data/repositories/home_repository.dart';
 import 'features/home/presentation/controllers/home_cubit.dart';
 
 class EBookStore extends StatelessWidget {
@@ -22,11 +23,19 @@ class EBookStore extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<HomeCubit>(
-          create: (_) =>
-              sl<HomeCubit>()..getFreeBooks("computer science", "free-ebooks"),
+          create: (_) => sl<HomeCubit>()
+            ..getRecentlyAddedBooks(
+              RecentlyAddedBooksParameters(
+                subject: 'subject:' "\"Computers\"",
+                startIndex: 0,
+                maxResults: 20,
+                orderBy: 'newest',
+              ),
+            ),
         ),
         BlocProvider<AppThemeCubit>(
-          create: (_) => sl<AppThemeCubit>()..changeAppTheme(ThemeState.initial),
+          create: (_) =>
+              sl<AppThemeCubit>()..changeAppTheme(ThemeState.initial),
         ),
       ],
       child: ScreenUtilInit(
