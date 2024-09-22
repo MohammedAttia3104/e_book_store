@@ -45,6 +45,8 @@ class RecentlyAddedBookItem extends StatelessWidget {
                 Text(
                   itemTitle ?? '',
                   style: AppStyles.font20BlackBold,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
                 verticalSpace(4),
                 Text(

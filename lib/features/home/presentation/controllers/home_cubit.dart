@@ -12,19 +12,21 @@ class HomeCubit extends Cubit<HomeState> {
 
   HomeCubit(this.homeRepository) : super(const HomeState.initial());
 
-  Future<void> getFreeBooks(String query, String filtering) async {
-    emit(const HomeState.freeBookLoadingState());
-    final response = await homeRepository.getFreeBooks(query, filtering);
+  Future<void> getRecentlyAddedBooks(
+      RecentlyAddedBooksParameters  recentlyAddedParameters) async {
+    emit(const HomeState.recentlyAddedBooksLoadingState());
+    final response =
+        await homeRepository.getRecentlyAddedComputerBooks(recentlyAddedParameters);
     response.when(
       success: (BooksModel books) {
-        log('Books: $books');
+        log('Books: ${books.toString()}');
         debugPrint(books.toString());
-        emit(HomeState.freeBookLoadedState(books));
+        emit(HomeState.recentlyAddedBooksSuccessState(books));
       },
       failure: (String message) {
         log('Error: $message');
         debugPrint(message);
-        emit(HomeState.freeBookErrorState(message));
+        emit(HomeState.recentlyAddedBooksErrorState(message));
       },
     );
   }

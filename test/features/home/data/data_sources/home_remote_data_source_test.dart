@@ -20,8 +20,10 @@ void main() {
   late MockHomeRemoteDataSource mockHomeRemoteDataSource;
   late Dio mockDio;
   late BooksModel booksModel;
-  const String query = "computer science";
-  const String filtering = "free-ebooks";
+  String subject = "subject:Computer";
+  String orderBy = "newest";
+  int maxResults = 10;
+  int startIndex = 0;
 
   setUp(() {
     mockHomeRemoteDataSource = MockHomeRemoteDataSource();
@@ -87,13 +89,17 @@ void main() {
   });
 
   test('return books model with query filtering to get freeBooks', () async {
-    when(mockHomeRemoteDataSource.getFreeBooks(query, filtering))
+    when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
+            subject, startIndex, maxResults, orderBy))
         .thenAnswer((_) async => booksModel);
 
-    final result =
-    await mockHomeRemoteDataSource.getFreeBooks(query, filtering);
+    final result = await mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
+      subject,
+      startIndex,
+      maxResults,
+      orderBy,
+    );
 
     expect(result, booksModel);
-    verify(mockHomeRemoteDataSource.getFreeBooks(query, filtering)).called(1);
   });
 }

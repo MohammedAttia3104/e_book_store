@@ -8,8 +8,8 @@ part 'home_state.freezed.dart';
 class HomeState with _$HomeState {
   const factory HomeState.initial() = _Initial;
 
-  const factory HomeState.freeBookLoadingState() = FreeBookLoadingState;
-  const factory HomeState.freeBookLoadedState(BooksModel books) = FreeBookLoadedState;
-  const factory HomeState.freeBookErrorState(String message) = FreeBookErrorState;
+  const factory HomeState.recentlyAddedBooksLoadingState() = RecentlyAddedBooksLoadingState;
+  const factory HomeState.recentlyAddedBooksSuccessState(BooksModel books) = RecentlyAddedBooksSuccessState;
+  const factory HomeState.recentlyAddedBooksErrorState(String message) = RecentlyAddedBooksErrorState;
 
 }

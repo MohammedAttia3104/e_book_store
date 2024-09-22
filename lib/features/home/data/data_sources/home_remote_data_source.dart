@@ -12,8 +12,10 @@ abstract class HomeRemoteDataSource {
       _HomeRemoteDataSource;
 
   @GET(ApiConstants.booksEP)
-  Future<BooksModel> getFreeBooks(
-    @Query("q") String query,
-    @Query("Filtering") String filtering,
+  Future<BooksModel> getRecentlyAddedComputerBooks(
+    @Query('q') String subject,
+    @Query('startIndex') int startIndex,
+    @Query('maxResults') int maxResults,
+    @Query('orderBy') String orderBy,
   );
 }
