@@ -1,9 +1,11 @@
+import 'package:e_book_store/features/home/data/models/book_item_model.dart';
+
 import '../../../../core/networking/api_result.dart';
 import '../data_sources/home_remote_data_source.dart';
 import '../models/books_model.dart';
 
 abstract class HomeRepository {
-  Future<ApiResult<BooksModel>> getRecentlyAddedComputerBooks(
+  Future<ApiResult<List<BookItemModel>>> getRecentlyAddedComputerBooks(
     RecentlyAddedBooksParameters parameters,
   );
 }
@@ -14,16 +16,16 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl({required this.remoteDataSource});
 
   @override
-  Future<ApiResult<BooksModel>> getRecentlyAddedComputerBooks(
+  Future<ApiResult<List<BookItemModel>>> getRecentlyAddedComputerBooks(
       RecentlyAddedBooksParameters parameters) async {
     try {
       final response = await remoteDataSource.getRecentlyAddedComputerBooks(
         parameters.subject,
-        parameters.startIndex ?? 0,
+        parameters.startIndex!,
         parameters.maxResults,
         parameters.orderBy,
       );
-      return ApiResult.success(response);
+      return ApiResult.success(response.items!);
     } catch (e) {
       return ApiResult.failure(e.toString());
     }
