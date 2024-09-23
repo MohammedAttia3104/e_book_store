@@ -1,7 +1,11 @@
+import 'package:e_book_store/core/enums/theme_states.dart';
+import 'package:e_book_store/core/helpers/shared_prefs_helper.dart';
 import 'package:e_book_store/core/theming/app_colors.dart';
 import 'package:e_book_store/core/theming/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../helpers/shared_prefs_keys.dart';
 
 class AppStyles {
   static TextStyle font16WhiteMedium = TextStyle(

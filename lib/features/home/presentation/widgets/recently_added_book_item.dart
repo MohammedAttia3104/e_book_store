@@ -66,9 +66,9 @@ class RecentlyAddedBookItem extends StatelessWidget {
                   verticalSpace(6),
                   Text(
                     itemDescription ?? '',
-                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: AppStyles.font14GrayRegular,
+                    maxLines: 3,
                   ),
                 ],
               ),
