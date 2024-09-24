@@ -23,7 +23,7 @@ class _ExpandableTextState extends State<ExpandableText> {
       children: [
         Text(
           widget.text,
-          style: AppStyles.font16WhiteMedium,
+          style: AppStyles.font16SecondaryMedium,
           maxLines: isExpanded ? null : widget.maxLines,
           overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
         ),

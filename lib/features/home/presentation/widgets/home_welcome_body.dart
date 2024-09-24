@@ -20,7 +20,7 @@ class HomeWelcomeBody extends StatelessWidget {
       children: [
         Text(
           AppStrings.welcomeBackHome + AppStrings.userName,
-          style: AppStyles.font16WhiteMedium,
+          style: AppStyles.font16SecondaryMedium,
         ),
         verticalSpace(4),
         BlocBuilder<AppThemeCubit, AppThemeState>(
@@ -28,7 +28,7 @@ class HomeWelcomeBody extends StatelessWidget {
             final isDarkTheme = state is AppThemeDarkState;
             return Text(
               AppStrings.whatDoYouWantToReadTodayHome,
-              style: AppStyles.font26WhiteMedium.copyWith(
+              style: AppStyles.font26BlackMedium.copyWith(
                 color:
                     isDarkTheme ? AppColors.whiteColor : AppColors.blackColor,
               ),

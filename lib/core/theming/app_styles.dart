@@ -8,13 +8,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../helpers/shared_prefs_keys.dart';
 
 class AppStyles {
-  static TextStyle font16WhiteMedium = TextStyle(
+  static TextStyle font16SecondaryMedium = TextStyle(
     fontSize: 16.sp,
     color: AppColors.fontSecondaryLightColor,
     fontWeight: FontWeightHelper.medium,
   );
+  static TextStyle font16WhiteMedium = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.whiteColor,
+    fontWeight: FontWeightHelper.medium,
+  );
 
-  static TextStyle font26WhiteMedium = TextStyle(
+  static TextStyle font26BlackMedium = TextStyle(
     fontSize: 26.sp,
     color: AppColors.blackColor,
     fontWeight: FontWeightHelper.medium,
