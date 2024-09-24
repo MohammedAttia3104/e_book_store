@@ -91,7 +91,7 @@ void main() {
     'emits [freeBookLoadingState, freeBookLoadedState] when getFreeBooks is successful',
     build: () {
       when(mockHomeRepository.getRecentlyAddedComputerBooks(any))
-          .thenAnswer((_) async => ApiResult.success(booksModel));
+          .thenAnswer((_) async => ApiResult.success(booksModel.items!));
       return homeCubit;
     },
     act: (cubit) => cubit.getRecentlyAddedBooks(

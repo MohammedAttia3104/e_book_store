@@ -1,13 +1,14 @@
-import 'package:e_book_store/core/extensions/navigation_extension.dart';
-import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
+import 'package:e_book_store/core/theming/controllers/app_theme_cubit.dart';
+import 'package:e_book_store/core/theming/controllers/app_theme_state.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
 import 'package:e_book_store/features/home/data/models/books_model.dart';
 import 'package:e_book_store/features/home/presentation/controllers/home_cubit.dart';
-import 'package:e_book_store/features/home/presentation/widgets/recently_added_book_item.dart';
+import 'package:e_book_store/features/home/presentation/widgets/home_recently_added_books_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/theming/app_colors.dart';
 import '../controllers/home_state.dart';
 
 class HomeRecentlyAddedBooks extends StatelessWidget {
@@ -54,28 +55,21 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         verticalSpace(30),
-        Text(
-          'Recently Added',
-          style: AppStyles.font24BlackBold,
-        ),
-        verticalSpace(20),
-        ListView.separated(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          scrollDirection: Axis.vertical,
-          itemBuilder: (context, index) {
-            return RecentlyAddedBookItem(
-              itemImage: books.items?[index].volumeInfo.imageLinks.thumbnail,
-              itemTitle: books.items?[index].volumeInfo.title,
-              itemAuthor: books.items?[index].volumeInfo.authors,
-              itemDescription: books.items?[index].volumeInfo.description,
-              itemId: books.items?[index].id,
+        BlocBuilder<AppThemeCubit, AppThemeState>(
+          builder: (context, state) {
+            final isDarkTheme = state is AppThemeDarkState;
+            return Text(
+              'Recently Added',
+              style: AppStyles.font24BlackBold.copyWith(
+                  color: isDarkTheme
+                      ? AppColors.whiteColor
+                      : AppColors.blackColor),
             );
           },
-          separatorBuilder: (context, index) {
-            return verticalSpace(15);
-          },
-          itemCount: books.items?.length ?? 0,
+        ),
+        verticalSpace(20),
+        HomeRecentlyAddedBooksListView(
+          books: books.items!,
         ),
       ],
     );

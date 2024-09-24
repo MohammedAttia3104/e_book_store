@@ -1,3 +1,4 @@
+import 'package:e_book_store/features/book/presentation/widgets/book_screen_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class BookScreen extends StatelessWidget {
@@ -6,8 +7,19 @@ class BookScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Book Screen Item'),
+      appBar: BookScreenAppBar(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: const [
+            // BookCoverImage(),
+            
+            // BookTitle(),
+            // BookAuthor(),
+            // BookDescription(),
+            // BookLoveButton(),
+            // BookShareButton(),
+          ],
+        ),
       ),
     );
   }

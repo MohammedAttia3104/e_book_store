@@ -94,11 +94,11 @@ void main() {
 
   test("Get Free Books should return Success with Books Model", () async {
     when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
-            subject, startIndex, maxResults, orderBy))
+        subject, startIndex, maxResults, orderBy))
         .thenAnswer((_) async => booksModel);
 
-    final ApiResult<BooksModel> result =
-        await homeRepository.getRecentlyAddedComputerBooks(
+    final ApiResult<List<BookItemModel>> result =
+    await homeRepository.getRecentlyAddedComputerBooks(
       RecentlyAddedBooksParameters(
         subject: subject,
         startIndex: startIndex,
@@ -123,10 +123,10 @@ void main() {
     );
 
     when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
-            subject, startIndex, maxResults, orderBy))
+        subject, startIndex, maxResults, orderBy))
         .thenThrow(dioError);
 
-    final ApiResult<BooksModel> result = await homeRepository
+    final ApiResult<List<BookItemModel>> result = await homeRepository
         .getRecentlyAddedComputerBooks(RecentlyAddedBooksParameters(
       subject: subject,
       startIndex: startIndex,
