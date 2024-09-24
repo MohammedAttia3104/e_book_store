@@ -1,4 +1,5 @@
 import 'package:e_book_store/core/utils/spacing.dart';
+import 'package:e_book_store/features/book/presentation/widgets/book_details_data_part.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_description_part.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_screen_app_bar.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_screen_cover_and_data.dart';
@@ -21,6 +22,8 @@ class BookScreen extends StatelessWidget {
               const BookScreenCoverAndData(),
               verticalSpace(20),
               const BookDescriptionPart(),
+              verticalSpace(20),
+              const BookDetailsDataPart(),
             ],
           ),
         ),
