@@ -23,12 +23,8 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
           current is RecentlyAddedBooksSuccessState,
       builder: (context, state) {
         return state.when(
-          initial: () {
-            return _showRecentlyAddedBooksLoadingState();
-          },
-          recentlyAddedBooksLoadingState: () {
-            return _showRecentlyAddedBooksLoadingState();
-          },
+          initial: () => const SizedBox.shrink(),
+          recentlyAddedBooksLoadingState: () => const SizedBox.shrink(),
           recentlyAddedBooksSuccessState: (BooksModel books) {
             return _showRecentlyAddedBooksData(books);
           },
@@ -44,10 +40,6 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
     return Center(
       child: Text(message),
     );
-  }
-
-  Center _showRecentlyAddedBooksLoadingState() {
-    return const Center(child: CircularProgressIndicator());
   }
 
   Column _showRecentlyAddedBooksData(BooksModel books) {
