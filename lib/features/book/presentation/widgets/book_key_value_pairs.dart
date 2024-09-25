@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/theming/app_styles.dart';
 
 class BookKeyAndValuePairs extends StatelessWidget {
@@ -20,21 +19,23 @@ class BookKeyAndValuePairs extends StatelessWidget {
           pair,
           style: AppStyles.font16GrayMedium,
         ),
-        RichText(
-          text: TextSpan(
-            children: value
-                .asMap()
-                .entries
-                .map((entry) {
-              return TextSpan(
-                text: entry.value,
-                style: AppStyles.font16BlueMedium,
-                children: [
-                  if (entry.key != value.length - 1)
-                    const TextSpan(text: ' - '),
-                ],
-              );
-            }).toList(),
+        Expanded(
+          child: RichText(
+            text: TextSpan(
+              children: value
+                  .asMap()
+                  .entries
+                  .map((entry) {
+                return TextSpan(
+                  text: entry.value,
+                  style: AppStyles.font16BlueMedium,
+                  children: [
+                    if (entry.key != value.length - 1)
+                      const TextSpan(text: ' - '),
+                  ],
+                );
+              }).toList(),
+            ),
           ),
         ),
       ],

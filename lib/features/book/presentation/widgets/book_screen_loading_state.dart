@@ -13,8 +13,8 @@ import 'package:skeletonizer/skeletonizer.dart';
 import 'package:e_book_store/core/theming/app_colors.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
 
-import '../../core/theming/controllers/app_theme_cubit.dart';
-import '../../core/theming/controllers/app_theme_state.dart';
+import '../../../../core/theming/controllers/app_theme_cubit.dart';
+import '../../../../core/theming/controllers/app_theme_state.dart';
 
 class BookScreenLoadingState extends StatelessWidget {
   const BookScreenLoadingState({super.key});

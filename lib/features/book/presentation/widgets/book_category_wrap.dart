@@ -1,3 +1,6 @@
+import 'package:e_book_store/core/extensions/navigation_extension.dart';
+import 'package:e_book_store/core/routing/app_router.dart';
+import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/core/theming/app_colors.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
 import 'package:e_book_store/core/theming/controllers/app_theme_cubit.dart';
@@ -19,12 +22,12 @@ class BookCategoryWrap extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox.shrink(),
+        return state.maybeWhen(
           bookDetailsLoading: () => const SizedBox.shrink(),
           bookDetailsSuccess: (BookItemModel book) =>
               _getBookCategorySuccessData(book),
           bookDetailsFailure: (message) => const SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );
@@ -45,24 +48,28 @@ class BookCategoryWrap extends StatelessWidget {
           return BlocBuilder<AppThemeCubit, AppThemeState>(
             builder: (context, state) {
               final isDarkTheme = state is AppThemeDarkState;
-              return Container(
-                alignment: Alignment.center,
-                //width: MediaQuery.sizeOf(context).width * 0.23,
-                height: 40.h,
-                decoration: BoxDecoration(
-                  color: !isDarkTheme
-                      ? AppColors.whiteColor
-                      : AppColors.blackColor,
-                  borderRadius: BorderRadius.circular(20.r),
-                  border: Border.all(
-                    color: AppColors.mainBlue,
-                    width: 2.r,
+              return GestureDetector(
+                onTap: () {
+                  context.pushNamed(Routes.categoryScreen, arguments: category);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 40.h,
+                  decoration: BoxDecoration(
+                    color: !isDarkTheme
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
+                    borderRadius: BorderRadius.circular(20.r),
+                    border: Border.all(
+                      color: AppColors.mainBlue,
+                      width: 2.r,
+                    ),
                   ),
-                ),
-                child: Text(
-                  category,
-                  style: AppStyles.font14BlueBold,
-                  textAlign: TextAlign.center,
+                  child: Text(
+                    category,
+                    style: AppStyles.font14BlueBold,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               );
             },
