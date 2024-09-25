@@ -6,7 +6,8 @@
 import 'dart:async' as _i4;
 
 import 'package:e_book_store/core/networking/api_result.dart' as _i2;
-import 'package:e_book_store/features/home/data/models/books_model.dart' as _i5;
+import 'package:e_book_store/features/home/data/models/book_item_model.dart'
+    as _i5;
 import 'package:e_book_store/features/home/data/repositories/home_repository.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
@@ -43,28 +44,22 @@ class MockHomeRepository extends _i1.Mock implements _i3.HomeRepository {
   }
 
   @override
-  _i4.Future<_i2.ApiResult<_i5.BooksModel>> getFreeBooks(
-    String? query,
-    String? filtering,
-  ) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getFreeBooks,
-          [
-            query,
-            filtering,
-          ],
-        ),
-        returnValue: _i4.Future<_i2.ApiResult<_i5.BooksModel>>.value(
-            _FakeApiResult_0<_i5.BooksModel>(
-          this,
-          Invocation.method(
-            #getFreeBooks,
-            [
-              query,
-              filtering,
-            ],
-          ),
-        )),
-      ) as _i4.Future<_i2.ApiResult<_i5.BooksModel>>);
+  _i4.Future<_i2.ApiResult<List<_i5.BookItemModel>>>
+      getRecentlyAddedComputerBooks(
+              _i3.RecentlyAddedBooksParameters? parameters) =>
+          (super.noSuchMethod(
+            Invocation.method(
+              #getRecentlyAddedComputerBooks,
+              [parameters],
+            ),
+            returnValue:
+                _i4.Future<_i2.ApiResult<List<_i5.BookItemModel>>>.value(
+                    _FakeApiResult_0<List<_i5.BookItemModel>>(
+              this,
+              Invocation.method(
+                #getRecentlyAddedComputerBooks,
+                [parameters],
+              ),
+            )),
+          ) as _i4.Future<_i2.ApiResult<List<_i5.BookItemModel>>>);
 }

@@ -43,25 +43,31 @@ class MockHomeRemoteDataSource extends _i1.Mock
   }
 
   @override
-  _i4.Future<_i2.BooksModel> getFreeBooks(
-    String? query,
-    String? filtering,
+  _i4.Future<_i2.BooksModel> getRecentlyAddedComputerBooks(
+    String? subject,
+    int? startIndex,
+    int? maxResults,
+    String? orderBy,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #getFreeBooks,
+          #getRecentlyAddedComputerBooks,
           [
-            query,
-            filtering,
+            subject,
+            startIndex,
+            maxResults,
+            orderBy,
           ],
         ),
         returnValue: _i4.Future<_i2.BooksModel>.value(_FakeBooksModel_0(
           this,
           Invocation.method(
-            #getFreeBooks,
+            #getRecentlyAddedComputerBooks,
             [
-              query,
-              filtering,
+              subject,
+              startIndex,
+              maxResults,
+              orderBy,
             ],
           ),
         )),

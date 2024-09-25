@@ -31,8 +31,7 @@ class SharedPrefHelper {
   /// Returns the value of the [key] from the SharedPreferences.
   static getData(String key) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    debugPrint("SharedPrefHelper : getData with key : $key");
-
+    debugPrint("SharedPrefHelper : getData with key : $key with value : ${sharedPreferences.get(key)}");
     return sharedPreferences.get(key);
   }
 }
