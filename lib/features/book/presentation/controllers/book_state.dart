@@ -1,5 +1,4 @@
 import 'package:e_book_store/features/home/data/models/book_item_model.dart';
-import 'package:e_book_store/features/home/data/models/books_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'book_state.freezed.dart';
