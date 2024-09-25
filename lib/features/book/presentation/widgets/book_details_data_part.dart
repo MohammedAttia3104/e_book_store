@@ -18,11 +18,9 @@ class BookDetailsDataPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox.shrink(),
-          bookDetailsLoading: () => const SizedBox.shrink(),
+        return state.maybeWhen(
           bookDetailsSuccess: (book) => _getBookDetails(book),
-          bookDetailsFailure: (message) => const SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

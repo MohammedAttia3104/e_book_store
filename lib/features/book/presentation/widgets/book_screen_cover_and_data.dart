@@ -21,9 +21,7 @@ class BookScreenCoverAndData extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<BookCubit, BookState>(
       builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox.shrink(),
-          bookDetailsLoading: () => const SizedBox.shrink(),
+        return state.maybeWhen(
           bookDetailsSuccess: (BookItemModel book) {
             return Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +60,7 @@ class BookScreenCoverAndData extends StatelessWidget {
               ],
             );
           },
-          bookDetailsFailure: (String message) => const SizedBox.shrink(),
+          orElse: () => const SizedBox.shrink(),
         );
       },
     );

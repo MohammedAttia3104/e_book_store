@@ -1,5 +1,5 @@
 import 'package:e_book_store/core/utils/spacing.dart';
-import 'package:e_book_store/features/book/book_screen_loading_state.dart';
+import 'package:e_book_store/features/book/presentation/widgets/book_screen_loading_state.dart';
 import 'package:e_book_store/features/book/presentation/controllers/book_cubit.dart';
 import 'package:e_book_store/features/book/presentation/controllers/book_state.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_description_part.dart';
@@ -23,8 +23,7 @@ class BookScreen extends StatelessWidget {
           padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
           child: BlocBuilder<BookCubit, BookState>(
             builder: (context, state) {
-              return state.when(
-                initial: () => const SizedBox.shrink(),
+              return state.maybeWhen(
                 bookDetailsLoading: () => const BookScreenLoadingState(),
                 bookDetailsSuccess: (book) {
                   return Column(
@@ -41,7 +40,25 @@ class BookScreen extends StatelessWidget {
                     ],
                   );
                 },
-                bookDetailsFailure: (message) => const SizedBox.shrink(),
+                bookDetailsFailure: (message) {
+                  return AlertDialog(
+                    title: Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 40.r,
+                    ),
+                    content: Text(message),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  );
+                },
+                orElse: () => const SizedBox.shrink(),
               );
             },
           ),
