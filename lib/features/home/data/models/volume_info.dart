@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'dimensions.dart';
 import 'reading_modes.dart';
 import 'image_links.dart';
 
@@ -30,6 +31,8 @@ class VolumeInfo {
   final String? maturityRating;
   @JsonKey(name: "allowAnonLogging")
   final bool allowAnonLogging;
+  @JsonKey(name: "dimensions")
+  final Dimensions? dimensions;
   @JsonKey(name: "contentVersion")
   final String contentVersion;
   @JsonKey(name: "imageLinks")
@@ -44,6 +47,7 @@ class VolumeInfo {
   final String? canonicalVolumeLink;
 
   VolumeInfo({
+    required this.dimensions,
     required this.title,
     this.subtitle,
     this.authors,
@@ -64,5 +68,6 @@ class VolumeInfo {
     this.canonicalVolumeLink,
   });
 
-  factory VolumeInfo.fromJson(Map<String, dynamic> json) => _$VolumeInfoFromJson(json);
+  factory VolumeInfo.fromJson(Map<String, dynamic> json) =>
+      _$VolumeInfoFromJson(json);
 }

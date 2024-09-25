@@ -8,28 +8,28 @@ import 'app_theme_state.dart';
 class AppThemeCubit extends Cubit<AppThemeState> {
   AppThemeCubit() : super(const AppThemeState.initial());
 
-  void changeAppTheme(ThemeState state) {
+  void changeAppTheme(ThemeState state) async {
     switch (state) {
       case ThemeState.light:
-        SharedPrefHelper.setData(
+        await SharedPrefHelper.setData(
             SharedPrefsKeys.themeModeKey, ThemeState.light.toString());
         emit(const AppThemeState.light());
         break;
       case ThemeState.dark:
-        SharedPrefHelper.setData(
+        await SharedPrefHelper.setData(
             SharedPrefsKeys.themeModeKey, ThemeState.dark.toString());
         emit(const AppThemeState.dark());
         break;
       case ThemeState.initial:
-        if (SharedPrefHelper.getData(SharedPrefsKeys.themeModeKey) != null) {
-          if (SharedPrefHelper.getData(SharedPrefsKeys.themeModeKey) ==
-              ThemeState.light.toString()) {
+        final themeMode = await SharedPrefHelper.getData(SharedPrefsKeys.themeModeKey);
+        if (themeMode != null) {
+          if (themeMode == ThemeState.light.toString()) {
             emit(const AppThemeState.light());
           } else {
             emit(const AppThemeState.dark());
           }
-          break;
         }
+        break;
     }
   }
 }

@@ -6,13 +6,26 @@ final ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: AppColors.mainColor,
   scaffoldBackgroundColor: AppColors.whiteColor,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.whiteColor,
+    elevation: 0,
+    iconTheme: IconThemeData(
+      color: AppColors.blackColor,
+    ),
+  ),
   fontFamily: GoogleFonts.poppins().fontFamily,
-  // iconTheme: const IconThemeData(color: AppColors.mainColor),
 );
 
 final ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: AppColors.whiteColor,
-  //scaffoldBackgroundColor: AppColors.whiteColor,
+  scaffoldBackgroundColor: AppColors.blackColor,
   fontFamily: GoogleFonts.poppins().fontFamily,
+  appBarTheme: const AppBarTheme(
+    backgroundColor: AppColors.blackColor,
+    elevation: 0,
+    iconTheme: IconThemeData(
+      color: AppColors.whiteColor,
+    ),
+  ),
 );

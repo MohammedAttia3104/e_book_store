@@ -7,6 +7,9 @@ part of 'volume_info.dart';
 // **************************************************************************
 
 VolumeInfo _$VolumeInfoFromJson(Map<String, dynamic> json) => VolumeInfo(
+      dimensions: json['dimensions'] == null
+          ? null
+          : Dimensions.fromJson(json['dimensions'] as Map<String, dynamic>),
       title: json['title'] as String?,
       subtitle: json['subtitle'] as String?,
       authors:
@@ -46,6 +49,7 @@ Map<String, dynamic> _$VolumeInfoToJson(VolumeInfo instance) =>
       'categories': instance.categories,
       'maturityRating': instance.maturityRating,
       'allowAnonLogging': instance.allowAnonLogging,
+      'dimensions': instance.dimensions,
       'contentVersion': instance.contentVersion,
       'imageLinks': instance.imageLinks,
       'language': instance.language,
