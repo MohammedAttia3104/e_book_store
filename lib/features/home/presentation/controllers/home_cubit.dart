@@ -5,6 +5,7 @@ import 'package:e_book_store/features/home/data/models/books_model.dart';
 import 'package:e_book_store/features/home/data/repositories/home_repository.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../../data/models/book_item_model.dart';
 import 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
@@ -18,10 +19,8 @@ class HomeCubit extends Cubit<HomeState> {
     final response =
         await homeRepository.getRecentlyAddedComputerBooks(recentlyAddedParameters);
     response.when(
-      success: (BooksModel books) {
-        log('Books: ${books.toString()}');
-        debugPrint(books.toString());
-        emit(HomeState.recentlyAddedBooksSuccessState(books));
+      success: (List<BookItemModel> books) {
+        emit(HomeState.recentlyAddedBooksSuccessState(BooksModel(items: books)));
       },
       failure: (String message) {
         log('Error: $message');

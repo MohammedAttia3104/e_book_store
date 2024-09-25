@@ -3,6 +3,7 @@ import 'package:e_book_store/features/home/data/data_sources/home_remote_data_so
 import 'package:e_book_store/features/home/data/models/access_info.dart';
 import 'package:e_book_store/features/home/data/models/book_item_model.dart';
 import 'package:e_book_store/features/home/data/models/books_model.dart';
+import 'package:e_book_store/features/home/data/models/dimensions.dart';
 import 'package:e_book_store/features/home/data/models/e_pub.dart';
 import 'package:e_book_store/features/home/data/models/image_links.dart';
 import 'package:e_book_store/features/home/data/models/reading_modes.dart';
@@ -58,6 +59,11 @@ void main() {
             previewLink: "",
             infoLink: "",
             canonicalVolumeLink: "canonicalVolumeLink",
+            dimensions: Dimensions(
+              height: "",
+              width: "",
+              thickness: "",
+            ),
           ),
           saleInfo: SaleInfo(
             country: "EG",
