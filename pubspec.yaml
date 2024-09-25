@@ -69,6 +69,12 @@ dependencies:
   cached_network_image: ^3.4.1
   # save data locally as key-value pairs
   shared_preferences: ^2.3.2
+  #
+  skeletonizer: ^1.4.2
+  # convert from HTML to Json
+  html: ^0.15.4
+  path_provider: ^2.1.4
+  flutter_widget_from_html: ^0.15.2
 
 
 

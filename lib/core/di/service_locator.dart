@@ -1,7 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:e_book_store/core/networking/dio_factory.dart';
+import 'package:e_book_store/features/book/data/data_source/book_remote_data_source.dart';
+import 'package:e_book_store/features/book/data/repository/book_details_repository.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/book/presentation/controllers/book_cubit.dart';
 import '../../features/home/data/data_sources/home_remote_data_source.dart';
 import '../../features/home/data/repositories/home_repository.dart';
 import '../../features/home/presentation/controllers/home_cubit.dart';
@@ -21,4 +24,14 @@ void setUpServiceLocator() {
 
   //theme cubit
   sl.registerFactory<AppThemeCubit>(() => AppThemeCubit());
+
+  ///BookDetails
+  sl.registerLazySingleton<BookRemoteDataSource>(
+    () => BookRemoteDataSource(sl()),
+  );
+  sl.registerLazySingleton<BookDetailsRepository>(
+    () => BookDetailsRepositoryImpl(bookRemoteDataSource: sl()),
+  );
+
+  sl.registerFactory<BookCubit>(() => BookCubit(sl()));
 }

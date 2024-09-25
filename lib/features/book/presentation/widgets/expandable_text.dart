@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_styles.dart';
@@ -18,31 +19,58 @@ class _ExpandableTextState extends State<ExpandableText> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Text(
-          widget.text,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final span = TextSpan(
+          text: widget.text,
           style: AppStyles.font16SecondaryMedium,
-          maxLines: isExpanded ? null : widget.maxLines,
-          overflow: isExpanded ? TextOverflow.visible : TextOverflow.ellipsis,
-        ),
-        if (!isExpanded)
-          GestureDetector(
-            onTap: () {
-              setState(() {
-                isExpanded = true;
-              });
-            },
-            child: Text(
-              'Show More',
-              style: AppStyles.font16BlueMedium.copyWith(
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.mainBlue,
+        );
+
+        final tp = TextPainter(
+          text: span,
+          maxLines: widget.maxLines,
+          textDirection: TextDirection.ltr,
+        );
+
+        tp.layout(maxWidth: constraints.maxWidth);
+
+        if (tp.didExceedMaxLines && !isExpanded) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              HtmlWidget(
+                widget.text,
+                textStyle: AppStyles.font16SecondaryMedium,
+                customStylesBuilder: (element) {
+                  return {
+                    'max-lines': '${widget.maxLines}',
+                    'overflow': 'ellipsis',
+                  };
+                },
               ),
-            ),
-          ),
-      ],
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isExpanded = true;
+                  });
+                },
+                child: Text(
+                  'Show More',
+                  style: AppStyles.font16BlueMedium.copyWith(
+                    decoration: TextDecoration.underline,
+                    decorationColor: AppColors.mainBlue,
+                  ),
+                ),
+              ),
+            ],
+          );
+        } else {
+          return HtmlWidget(
+            widget.text,
+            textStyle: AppStyles.font16SecondaryMedium,
+          );
+        }
+      },
     );
   }
 }

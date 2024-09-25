@@ -1,6 +1,13 @@
 import 'package:e_book_store/core/theming/app_styles.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_cubit.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_state.dart';
+import 'package:e_book_store/features/book/presentation/widgets/book_key_value_pairs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/theming/app_colors.dart';
+import '../../../home/data/models/book_item_model.dart';
 
 class BookDetailsDataPart extends StatelessWidget {
   const BookDetailsDataPart({
@@ -9,6 +16,19 @@ class BookDetailsDataPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<BookCubit, BookState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const SizedBox.shrink(),
+          bookDetailsLoading: () => const SizedBox.shrink(),
+          bookDetailsSuccess: (book) => _getBookDetails(book),
+          bookDetailsFailure: (message) => const SizedBox.shrink(),
+        );
+      },
+    );
+  }
+
+  Widget _getBookDetails(BookItemModel book) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -21,63 +41,51 @@ class BookDetailsDataPart extends StatelessWidget {
           thickness: 1,
         ),
         verticalSpace(10),
-        const BookKeyAndValueData(
-          pair: 'Publisher: ',
-          value: ['Simon & Schuster'],
+        Row(
+          children: [
+            Text(
+              'Publisher: ',
+              style: AppStyles.font16GrayMedium,
+            ),
+            Text(
+              book.volumeInfo.publisher ?? 'N/A',
+              style: AppStyles.font16BlueMedium,
+            ),
+            horizontalSpace(4),
+            const Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: AppColors.mainBlue,
+            ),
+          ],
         ),
         verticalSpace(5),
-        const BookKeyAndValueData(
-          pair: 'publishedDate: ',
-          value: ['20-10-2002'],
+        BookKeyAndValuePairs(
+          pair: 'Published Date: ',
+          value: [book.volumeInfo.publishedDate ?? 'N/A'],
         ),
         verticalSpace(5),
-        const BookKeyAndValueData(
-          pair: 'Pages-Number: ',
-          value: ['320'],
+        BookKeyAndValuePairs(
+          pair: 'Pages Number: ',
+          value: [book.volumeInfo.pageCount.toString()],
         ),
         verticalSpace(5),
-        const BookKeyAndValueData(
-          pair: 'Dimensions: ',
-          value: ['320 x 240 x 20 inches'],
+        Row(
+          children: [
+            Text(
+              'Dimensions: ',
+              style: AppStyles.font16GrayMedium,
+            ),
+            Text(
+              '${book.volumeInfo.dimensions?.height ?? 'N/A'} x ${book.volumeInfo.dimensions?.width ?? 'N/A'} x ${book.volumeInfo.dimensions?.thickness ?? 'N/A'}',
+              style: AppStyles.font16BlueMedium,
+            ),
+          ],
         ),
         verticalSpace(5),
-        const BookKeyAndValueData(
-          pair: 'Author (s): ',
-          value: ['Laura Dave', 'John Doe', 'Jane Doe'],
-        ),
-      ],
-    );
-  }
-}
-
-class BookKeyAndValueData extends StatelessWidget {
-  final String pair;
-  final List<String> value;
-
-  const BookKeyAndValueData(
-      {super.key, required this.pair, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          pair,
-          style: AppStyles.font16GrayMedium,
-        ),
-        RichText(
-          text: TextSpan(
-            children: value.asMap().entries.map((entry) {
-              return TextSpan(
-                text: entry.value,
-                style: AppStyles.font16BlueMedium,
-                children: [
-                  if (entry.key != value.length - 1)
-                    const TextSpan(text: ' - '),
-                ],
-              );
-            }).toList(),
-          ),
+        BookKeyAndValuePairs(
+          pair: 'Author(s): ',
+          value: book.volumeInfo.authors ?? ['N/A'],
         ),
       ],
     );

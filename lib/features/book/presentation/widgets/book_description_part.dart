@@ -1,7 +1,12 @@
 import 'package:e_book_store/core/theming/app_styles.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_cubit.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_state.dart';
 import 'package:e_book_store/features/book/presentation/widgets/expandable_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../home/data/models/book_item_model.dart';
 
 class BookDescriptionPart extends StatelessWidget {
   const BookDescriptionPart({
@@ -10,6 +15,19 @@ class BookDescriptionPart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<BookCubit, BookState>(
+      builder: (context, state) {
+        return state.when(
+          initial: () => const SizedBox.shrink(),
+          bookDetailsLoading: () => const SizedBox.shrink(),
+          bookDetailsSuccess: (book) => _getBookDescription(book),
+          bookDetailsFailure: (message) => const SizedBox.shrink(),
+        );
+      },
+    );
+  }
+
+  Widget _getBookDescription(BookItemModel book) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,10 +40,9 @@ class BookDescriptionPart extends StatelessWidget {
           thickness: 1,
         ),
         verticalSpace(10),
-        const ExpandableText(
-          text:
-              'Lorem ipsum dolor sit amet, consectetur adipiscing onsectetur adipiscing elit.Sed ut puruonsectetur adipiscing elit.Sed ut puruonsectetur adipiscing elit.Sed ut puruonsectetur adipiscing elit.Sed ut puru onsectetur adipiscing elit.Sed ut puruonsectetur adipiscing elit.Sed ut puruonsectetur adipiscing elit.Sed ut puru elit.Sed ut purus Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ut purus Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ut purus Lorem ipsum dolor sit amet, consectetur adipiscing elit.Sed ut purus',
-          maxLines: 7,
+        ExpandableText(
+          text: book.volumeInfo.description ?? '',
+          maxLines: 6,
         ),
       ],
     );

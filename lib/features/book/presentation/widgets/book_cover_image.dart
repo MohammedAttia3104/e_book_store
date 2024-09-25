@@ -17,7 +17,7 @@ class BookCoverImage extends StatelessWidget {
       shimmerBackColor: Colors.greenAccent,
       height: 250.h,
       width: MediaQuery.sizeOf(context).width * 0.4,
-      boxFit: BoxFit.cover,
+      boxFit: BoxFit.contain,
     );
   }
 }

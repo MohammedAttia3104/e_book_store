@@ -1,10 +1,14 @@
 import 'package:e_book_store/core/utils/spacing.dart';
-import 'package:e_book_store/features/book/presentation/widgets/book_read_previews_and_download.dart';
+import 'package:e_book_store/features/book/book_screen_loading_state.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_cubit.dart';
+import 'package:e_book_store/features/book/presentation/controllers/book_state.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_description_part.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_details_data_part.dart';
+import 'package:e_book_store/features/book/presentation/widgets/book_read_previews_and_download.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_screen_app_bar.dart';
 import 'package:e_book_store/features/book/presentation/widgets/book_screen_cover_and_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BookScreen extends StatelessWidget {
@@ -17,18 +21,29 @@ class BookScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const BookScreenCoverAndData(),
-              verticalSpace(20),
-              const BookDescriptionPart(),
-              verticalSpace(20),
-              const BookDetailsDataPart(),
-              verticalSpace(20),
-              const BookReadPreviewsAndDownload(),
-              verticalSpace(30),
-            ],
+          child: BlocBuilder<BookCubit, BookState>(
+            builder: (context, state) {
+              return state.when(
+                initial: () => const SizedBox.shrink(),
+                bookDetailsLoading: () => const BookScreenLoadingState(),
+                bookDetailsSuccess: (book) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const BookScreenCoverAndData(),
+                      verticalSpace(20),
+                      const BookDescriptionPart(),
+                      verticalSpace(20),
+                      const BookDetailsDataPart(),
+                      verticalSpace(20),
+                      const BookReadPreviewsAndDownload(),
+                      verticalSpace(30),
+                    ],
+                  );
+                },
+                bookDetailsFailure: (message) => const SizedBox.shrink(),
+              );
+            },
           ),
         ),
       ),
