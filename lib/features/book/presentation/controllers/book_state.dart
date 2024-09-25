@@ -13,4 +13,10 @@ class BookState with _$BookState {
 
   const factory BookState.bookDetailsFailure(String message) =
       BookDetailsFailure;
+
+  const factory BookState.showCategoriesFromBookLoading() = ShowCategoriesFromBookLoading;
+
+  const factory BookState.showCategoriesFromBookSuccess(List<BookItemModel> data) = ShowCategoriesFromBookSuccess;
+
+  const factory BookState.showCategoriesFromBookFailure(String message) = ShowCategoriesFromBookFailure;
 }

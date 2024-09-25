@@ -17,4 +17,13 @@ class BookCubit extends Cubit<BookState> {
       failure: (message) => emit(BookState.bookDetailsFailure(message)),
     );
   }
+
+  void showCategoriesFromBook(String category) async {
+    emit(const BookState.showCategoriesFromBookLoading());
+    final booksFromCategory = await bookDetailsRepository.showCategoriesFromBook(category);
+    booksFromCategory.when(
+      success: (data) => emit(BookState.showCategoriesFromBookSuccess(data)),
+      failure: (message) => emit(BookState.showCategoriesFromBookFailure(message)),
+    );
+  }
 }
