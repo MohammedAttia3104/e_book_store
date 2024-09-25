@@ -19,50 +19,59 @@ mixin _$HomeState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() freeBookLoadingState,
-    required TResult Function(BooksModel books) freeBookLoadedState,
-    required TResult Function(String message) freeBookErrorState,
+    required TResult Function() recentlyAddedBooksLoadingState,
+    required TResult Function(BooksModel books) recentlyAddedBooksSuccessState,
+    required TResult Function(String message) recentlyAddedBooksErrorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? freeBookLoadingState,
-    TResult? Function(BooksModel books)? freeBookLoadedState,
-    TResult? Function(String message)? freeBookErrorState,
+    TResult? Function()? recentlyAddedBooksLoadingState,
+    TResult? Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult? Function(String message)? recentlyAddedBooksErrorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? freeBookLoadingState,
-    TResult Function(BooksModel books)? freeBookLoadedState,
-    TResult Function(String message)? freeBookErrorState,
+    TResult Function()? recentlyAddedBooksLoadingState,
+    TResult Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult Function(String message)? recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(FreeBookLoadingState value) freeBookLoadingState,
-    required TResult Function(FreeBookLoadedState value) freeBookLoadedState,
-    required TResult Function(FreeBookErrorState value) freeBookErrorState,
+    required TResult Function(RecentlyAddedBooksLoadingState value)
+        recentlyAddedBooksLoadingState,
+    required TResult Function(RecentlyAddedBooksSuccessState value)
+        recentlyAddedBooksSuccessState,
+    required TResult Function(RecentlyAddedBooksErrorState value)
+        recentlyAddedBooksErrorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult? Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult? Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult? Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult? Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult? Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -124,9 +133,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() freeBookLoadingState,
-    required TResult Function(BooksModel books) freeBookLoadedState,
-    required TResult Function(String message) freeBookErrorState,
+    required TResult Function() recentlyAddedBooksLoadingState,
+    required TResult Function(BooksModel books) recentlyAddedBooksSuccessState,
+    required TResult Function(String message) recentlyAddedBooksErrorState,
   }) {
     return initial();
   }
@@ -135,9 +144,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? freeBookLoadingState,
-    TResult? Function(BooksModel books)? freeBookLoadedState,
-    TResult? Function(String message)? freeBookErrorState,
+    TResult? Function()? recentlyAddedBooksLoadingState,
+    TResult? Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult? Function(String message)? recentlyAddedBooksErrorState,
   }) {
     return initial?.call();
   }
@@ -146,9 +155,9 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? freeBookLoadingState,
-    TResult Function(BooksModel books)? freeBookLoadedState,
-    TResult Function(String message)? freeBookErrorState,
+    TResult Function()? recentlyAddedBooksLoadingState,
+    TResult Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult Function(String message)? recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -161,9 +170,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(FreeBookLoadingState value) freeBookLoadingState,
-    required TResult Function(FreeBookLoadedState value) freeBookLoadedState,
-    required TResult Function(FreeBookErrorState value) freeBookErrorState,
+    required TResult Function(RecentlyAddedBooksLoadingState value)
+        recentlyAddedBooksLoadingState,
+    required TResult Function(RecentlyAddedBooksSuccessState value)
+        recentlyAddedBooksSuccessState,
+    required TResult Function(RecentlyAddedBooksErrorState value)
+        recentlyAddedBooksErrorState,
   }) {
     return initial(this);
   }
@@ -172,9 +184,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult? Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult? Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult? Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult? Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult? Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
   }) {
     return initial?.call(this);
   }
@@ -183,9 +198,12 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -200,36 +218,39 @@ abstract class _Initial implements HomeState {
 }
 
 /// @nodoc
-abstract class _$$FreeBookLoadingStateImplCopyWith<$Res> {
-  factory _$$FreeBookLoadingStateImplCopyWith(_$FreeBookLoadingStateImpl value,
-          $Res Function(_$FreeBookLoadingStateImpl) then) =
-      __$$FreeBookLoadingStateImplCopyWithImpl<$Res>;
+abstract class _$$RecentlyAddedBooksLoadingStateImplCopyWith<$Res> {
+  factory _$$RecentlyAddedBooksLoadingStateImplCopyWith(
+          _$RecentlyAddedBooksLoadingStateImpl value,
+          $Res Function(_$RecentlyAddedBooksLoadingStateImpl) then) =
+      __$$RecentlyAddedBooksLoadingStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$FreeBookLoadingStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$FreeBookLoadingStateImpl>
-    implements _$$FreeBookLoadingStateImplCopyWith<$Res> {
-  __$$FreeBookLoadingStateImplCopyWithImpl(_$FreeBookLoadingStateImpl _value,
-      $Res Function(_$FreeBookLoadingStateImpl) _then)
+class __$$RecentlyAddedBooksLoadingStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$RecentlyAddedBooksLoadingStateImpl>
+    implements _$$RecentlyAddedBooksLoadingStateImplCopyWith<$Res> {
+  __$$RecentlyAddedBooksLoadingStateImplCopyWithImpl(
+      _$RecentlyAddedBooksLoadingStateImpl _value,
+      $Res Function(_$RecentlyAddedBooksLoadingStateImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$FreeBookLoadingStateImpl implements FreeBookLoadingState {
-  const _$FreeBookLoadingStateImpl();
+class _$RecentlyAddedBooksLoadingStateImpl
+    implements RecentlyAddedBooksLoadingState {
+  const _$RecentlyAddedBooksLoadingStateImpl();
 
   @override
   String toString() {
-    return 'HomeState.freeBookLoadingState()';
+    return 'HomeState.recentlyAddedBooksLoadingState()';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FreeBookLoadingStateImpl);
+            other is _$RecentlyAddedBooksLoadingStateImpl);
   }
 
   @override
@@ -239,35 +260,35 @@ class _$FreeBookLoadingStateImpl implements FreeBookLoadingState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() freeBookLoadingState,
-    required TResult Function(BooksModel books) freeBookLoadedState,
-    required TResult Function(String message) freeBookErrorState,
+    required TResult Function() recentlyAddedBooksLoadingState,
+    required TResult Function(BooksModel books) recentlyAddedBooksSuccessState,
+    required TResult Function(String message) recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadingState();
+    return recentlyAddedBooksLoadingState();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? freeBookLoadingState,
-    TResult? Function(BooksModel books)? freeBookLoadedState,
-    TResult? Function(String message)? freeBookErrorState,
+    TResult? Function()? recentlyAddedBooksLoadingState,
+    TResult? Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult? Function(String message)? recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadingState?.call();
+    return recentlyAddedBooksLoadingState?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? freeBookLoadingState,
-    TResult Function(BooksModel books)? freeBookLoadedState,
-    TResult Function(String message)? freeBookErrorState,
+    TResult Function()? recentlyAddedBooksLoadingState,
+    TResult Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult Function(String message)? recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookLoadingState != null) {
-      return freeBookLoadingState();
+    if (recentlyAddedBooksLoadingState != null) {
+      return recentlyAddedBooksLoadingState();
     }
     return orElse();
   }
@@ -276,59 +297,71 @@ class _$FreeBookLoadingStateImpl implements FreeBookLoadingState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(FreeBookLoadingState value) freeBookLoadingState,
-    required TResult Function(FreeBookLoadedState value) freeBookLoadedState,
-    required TResult Function(FreeBookErrorState value) freeBookErrorState,
+    required TResult Function(RecentlyAddedBooksLoadingState value)
+        recentlyAddedBooksLoadingState,
+    required TResult Function(RecentlyAddedBooksSuccessState value)
+        recentlyAddedBooksSuccessState,
+    required TResult Function(RecentlyAddedBooksErrorState value)
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadingState(this);
+    return recentlyAddedBooksLoadingState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult? Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult? Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult? Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult? Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult? Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadingState?.call(this);
+    return recentlyAddedBooksLoadingState?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookLoadingState != null) {
-      return freeBookLoadingState(this);
+    if (recentlyAddedBooksLoadingState != null) {
+      return recentlyAddedBooksLoadingState(this);
     }
     return orElse();
   }
 }
 
-abstract class FreeBookLoadingState implements HomeState {
-  const factory FreeBookLoadingState() = _$FreeBookLoadingStateImpl;
+abstract class RecentlyAddedBooksLoadingState implements HomeState {
+  const factory RecentlyAddedBooksLoadingState() =
+      _$RecentlyAddedBooksLoadingStateImpl;
 }
 
 /// @nodoc
-abstract class _$$FreeBookLoadedStateImplCopyWith<$Res> {
-  factory _$$FreeBookLoadedStateImplCopyWith(_$FreeBookLoadedStateImpl value,
-          $Res Function(_$FreeBookLoadedStateImpl) then) =
-      __$$FreeBookLoadedStateImplCopyWithImpl<$Res>;
+abstract class _$$RecentlyAddedBooksSuccessStateImplCopyWith<$Res> {
+  factory _$$RecentlyAddedBooksSuccessStateImplCopyWith(
+          _$RecentlyAddedBooksSuccessStateImpl value,
+          $Res Function(_$RecentlyAddedBooksSuccessStateImpl) then) =
+      __$$RecentlyAddedBooksSuccessStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({BooksModel books});
 }
 
 /// @nodoc
-class __$$FreeBookLoadedStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$FreeBookLoadedStateImpl>
-    implements _$$FreeBookLoadedStateImplCopyWith<$Res> {
-  __$$FreeBookLoadedStateImplCopyWithImpl(_$FreeBookLoadedStateImpl _value,
-      $Res Function(_$FreeBookLoadedStateImpl) _then)
+class __$$RecentlyAddedBooksSuccessStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$RecentlyAddedBooksSuccessStateImpl>
+    implements _$$RecentlyAddedBooksSuccessStateImplCopyWith<$Res> {
+  __$$RecentlyAddedBooksSuccessStateImplCopyWithImpl(
+      _$RecentlyAddedBooksSuccessStateImpl _value,
+      $Res Function(_$RecentlyAddedBooksSuccessStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -336,7 +369,7 @@ class __$$FreeBookLoadedStateImplCopyWithImpl<$Res>
   $Res call({
     Object? books = null,
   }) {
-    return _then(_$FreeBookLoadedStateImpl(
+    return _then(_$RecentlyAddedBooksSuccessStateImpl(
       null == books
           ? _value.books
           : books // ignore: cast_nullable_to_non_nullable
@@ -347,22 +380,23 @@ class __$$FreeBookLoadedStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FreeBookLoadedStateImpl implements FreeBookLoadedState {
-  const _$FreeBookLoadedStateImpl(this.books);
+class _$RecentlyAddedBooksSuccessStateImpl
+    implements RecentlyAddedBooksSuccessState {
+  const _$RecentlyAddedBooksSuccessStateImpl(this.books);
 
   @override
   final BooksModel books;
 
   @override
   String toString() {
-    return 'HomeState.freeBookLoadedState(books: $books)';
+    return 'HomeState.recentlyAddedBooksSuccessState(books: $books)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FreeBookLoadedStateImpl &&
+            other is _$RecentlyAddedBooksSuccessStateImpl &&
             (identical(other.books, books) || other.books == books));
   }
 
@@ -372,43 +406,44 @@ class _$FreeBookLoadedStateImpl implements FreeBookLoadedState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FreeBookLoadedStateImplCopyWith<_$FreeBookLoadedStateImpl> get copyWith =>
-      __$$FreeBookLoadedStateImplCopyWithImpl<_$FreeBookLoadedStateImpl>(
-          this, _$identity);
+  _$$RecentlyAddedBooksSuccessStateImplCopyWith<
+          _$RecentlyAddedBooksSuccessStateImpl>
+      get copyWith => __$$RecentlyAddedBooksSuccessStateImplCopyWithImpl<
+          _$RecentlyAddedBooksSuccessStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() freeBookLoadingState,
-    required TResult Function(BooksModel books) freeBookLoadedState,
-    required TResult Function(String message) freeBookErrorState,
+    required TResult Function() recentlyAddedBooksLoadingState,
+    required TResult Function(BooksModel books) recentlyAddedBooksSuccessState,
+    required TResult Function(String message) recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadedState(books);
+    return recentlyAddedBooksSuccessState(books);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? freeBookLoadingState,
-    TResult? Function(BooksModel books)? freeBookLoadedState,
-    TResult? Function(String message)? freeBookErrorState,
+    TResult? Function()? recentlyAddedBooksLoadingState,
+    TResult? Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult? Function(String message)? recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadedState?.call(books);
+    return recentlyAddedBooksSuccessState?.call(books);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? freeBookLoadingState,
-    TResult Function(BooksModel books)? freeBookLoadedState,
-    TResult Function(String message)? freeBookErrorState,
+    TResult Function()? recentlyAddedBooksLoadingState,
+    TResult Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult Function(String message)? recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookLoadedState != null) {
-      return freeBookLoadedState(books);
+    if (recentlyAddedBooksSuccessState != null) {
+      return recentlyAddedBooksSuccessState(books);
     }
     return orElse();
   }
@@ -417,65 +452,77 @@ class _$FreeBookLoadedStateImpl implements FreeBookLoadedState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(FreeBookLoadingState value) freeBookLoadingState,
-    required TResult Function(FreeBookLoadedState value) freeBookLoadedState,
-    required TResult Function(FreeBookErrorState value) freeBookErrorState,
+    required TResult Function(RecentlyAddedBooksLoadingState value)
+        recentlyAddedBooksLoadingState,
+    required TResult Function(RecentlyAddedBooksSuccessState value)
+        recentlyAddedBooksSuccessState,
+    required TResult Function(RecentlyAddedBooksErrorState value)
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadedState(this);
+    return recentlyAddedBooksSuccessState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult? Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult? Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult? Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult? Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult? Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookLoadedState?.call(this);
+    return recentlyAddedBooksSuccessState?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookLoadedState != null) {
-      return freeBookLoadedState(this);
+    if (recentlyAddedBooksSuccessState != null) {
+      return recentlyAddedBooksSuccessState(this);
     }
     return orElse();
   }
 }
 
-abstract class FreeBookLoadedState implements HomeState {
-  const factory FreeBookLoadedState(final BooksModel books) =
-      _$FreeBookLoadedStateImpl;
+abstract class RecentlyAddedBooksSuccessState implements HomeState {
+  const factory RecentlyAddedBooksSuccessState(final BooksModel books) =
+      _$RecentlyAddedBooksSuccessStateImpl;
 
   BooksModel get books;
   @JsonKey(ignore: true)
-  _$$FreeBookLoadedStateImplCopyWith<_$FreeBookLoadedStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RecentlyAddedBooksSuccessStateImplCopyWith<
+          _$RecentlyAddedBooksSuccessStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$FreeBookErrorStateImplCopyWith<$Res> {
-  factory _$$FreeBookErrorStateImplCopyWith(_$FreeBookErrorStateImpl value,
-          $Res Function(_$FreeBookErrorStateImpl) then) =
-      __$$FreeBookErrorStateImplCopyWithImpl<$Res>;
+abstract class _$$RecentlyAddedBooksErrorStateImplCopyWith<$Res> {
+  factory _$$RecentlyAddedBooksErrorStateImplCopyWith(
+          _$RecentlyAddedBooksErrorStateImpl value,
+          $Res Function(_$RecentlyAddedBooksErrorStateImpl) then) =
+      __$$RecentlyAddedBooksErrorStateImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String message});
 }
 
 /// @nodoc
-class __$$FreeBookErrorStateImplCopyWithImpl<$Res>
-    extends _$HomeStateCopyWithImpl<$Res, _$FreeBookErrorStateImpl>
-    implements _$$FreeBookErrorStateImplCopyWith<$Res> {
-  __$$FreeBookErrorStateImplCopyWithImpl(_$FreeBookErrorStateImpl _value,
-      $Res Function(_$FreeBookErrorStateImpl) _then)
+class __$$RecentlyAddedBooksErrorStateImplCopyWithImpl<$Res>
+    extends _$HomeStateCopyWithImpl<$Res, _$RecentlyAddedBooksErrorStateImpl>
+    implements _$$RecentlyAddedBooksErrorStateImplCopyWith<$Res> {
+  __$$RecentlyAddedBooksErrorStateImplCopyWithImpl(
+      _$RecentlyAddedBooksErrorStateImpl _value,
+      $Res Function(_$RecentlyAddedBooksErrorStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -483,7 +530,7 @@ class __$$FreeBookErrorStateImplCopyWithImpl<$Res>
   $Res call({
     Object? message = null,
   }) {
-    return _then(_$FreeBookErrorStateImpl(
+    return _then(_$RecentlyAddedBooksErrorStateImpl(
       null == message
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
@@ -494,22 +541,23 @@ class __$$FreeBookErrorStateImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$FreeBookErrorStateImpl implements FreeBookErrorState {
-  const _$FreeBookErrorStateImpl(this.message);
+class _$RecentlyAddedBooksErrorStateImpl
+    implements RecentlyAddedBooksErrorState {
+  const _$RecentlyAddedBooksErrorStateImpl(this.message);
 
   @override
   final String message;
 
   @override
   String toString() {
-    return 'HomeState.freeBookErrorState(message: $message)';
+    return 'HomeState.recentlyAddedBooksErrorState(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FreeBookErrorStateImpl &&
+            other is _$RecentlyAddedBooksErrorStateImpl &&
             (identical(other.message, message) || other.message == message));
   }
 
@@ -519,43 +567,44 @@ class _$FreeBookErrorStateImpl implements FreeBookErrorState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FreeBookErrorStateImplCopyWith<_$FreeBookErrorStateImpl> get copyWith =>
-      __$$FreeBookErrorStateImplCopyWithImpl<_$FreeBookErrorStateImpl>(
-          this, _$identity);
+  _$$RecentlyAddedBooksErrorStateImplCopyWith<
+          _$RecentlyAddedBooksErrorStateImpl>
+      get copyWith => __$$RecentlyAddedBooksErrorStateImplCopyWithImpl<
+          _$RecentlyAddedBooksErrorStateImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function() freeBookLoadingState,
-    required TResult Function(BooksModel books) freeBookLoadedState,
-    required TResult Function(String message) freeBookErrorState,
+    required TResult Function() recentlyAddedBooksLoadingState,
+    required TResult Function(BooksModel books) recentlyAddedBooksSuccessState,
+    required TResult Function(String message) recentlyAddedBooksErrorState,
   }) {
-    return freeBookErrorState(message);
+    return recentlyAddedBooksErrorState(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function()? freeBookLoadingState,
-    TResult? Function(BooksModel books)? freeBookLoadedState,
-    TResult? Function(String message)? freeBookErrorState,
+    TResult? Function()? recentlyAddedBooksLoadingState,
+    TResult? Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult? Function(String message)? recentlyAddedBooksErrorState,
   }) {
-    return freeBookErrorState?.call(message);
+    return recentlyAddedBooksErrorState?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function()? freeBookLoadingState,
-    TResult Function(BooksModel books)? freeBookLoadedState,
-    TResult Function(String message)? freeBookErrorState,
+    TResult Function()? recentlyAddedBooksLoadingState,
+    TResult Function(BooksModel books)? recentlyAddedBooksSuccessState,
+    TResult Function(String message)? recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookErrorState != null) {
-      return freeBookErrorState(message);
+    if (recentlyAddedBooksErrorState != null) {
+      return recentlyAddedBooksErrorState(message);
     }
     return orElse();
   }
@@ -564,46 +613,56 @@ class _$FreeBookErrorStateImpl implements FreeBookErrorState {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
-    required TResult Function(FreeBookLoadingState value) freeBookLoadingState,
-    required TResult Function(FreeBookLoadedState value) freeBookLoadedState,
-    required TResult Function(FreeBookErrorState value) freeBookErrorState,
+    required TResult Function(RecentlyAddedBooksLoadingState value)
+        recentlyAddedBooksLoadingState,
+    required TResult Function(RecentlyAddedBooksSuccessState value)
+        recentlyAddedBooksSuccessState,
+    required TResult Function(RecentlyAddedBooksErrorState value)
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookErrorState(this);
+    return recentlyAddedBooksErrorState(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
-    TResult? Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult? Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult? Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult? Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult? Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult? Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
   }) {
-    return freeBookErrorState?.call(this);
+    return recentlyAddedBooksErrorState?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
-    TResult Function(FreeBookLoadingState value)? freeBookLoadingState,
-    TResult Function(FreeBookLoadedState value)? freeBookLoadedState,
-    TResult Function(FreeBookErrorState value)? freeBookErrorState,
+    TResult Function(RecentlyAddedBooksLoadingState value)?
+        recentlyAddedBooksLoadingState,
+    TResult Function(RecentlyAddedBooksSuccessState value)?
+        recentlyAddedBooksSuccessState,
+    TResult Function(RecentlyAddedBooksErrorState value)?
+        recentlyAddedBooksErrorState,
     required TResult orElse(),
   }) {
-    if (freeBookErrorState != null) {
-      return freeBookErrorState(this);
+    if (recentlyAddedBooksErrorState != null) {
+      return recentlyAddedBooksErrorState(this);
     }
     return orElse();
   }
 }
 
-abstract class FreeBookErrorState implements HomeState {
-  const factory FreeBookErrorState(final String message) =
-      _$FreeBookErrorStateImpl;
+abstract class RecentlyAddedBooksErrorState implements HomeState {
+  const factory RecentlyAddedBooksErrorState(final String message) =
+      _$RecentlyAddedBooksErrorStateImpl;
 
   String get message;
   @JsonKey(ignore: true)
-  _$$FreeBookErrorStateImplCopyWith<_$FreeBookErrorStateImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$RecentlyAddedBooksErrorStateImplCopyWith<
+          _$RecentlyAddedBooksErrorStateImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
