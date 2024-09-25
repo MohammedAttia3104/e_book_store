@@ -4,6 +4,7 @@ import 'package:e_book_store/features/home/data/data_sources/home_remote_data_so
 import 'package:e_book_store/features/home/data/models/access_info.dart';
 import 'package:e_book_store/features/home/data/models/book_item_model.dart';
 import 'package:e_book_store/features/home/data/models/books_model.dart';
+import 'package:e_book_store/features/home/data/models/dimensions.dart';
 import 'package:e_book_store/features/home/data/models/e_pub.dart';
 import 'package:e_book_store/features/home/data/models/image_links.dart';
 import 'package:e_book_store/features/home/data/models/reading_modes.dart';
@@ -62,6 +63,11 @@ void main() {
             previewLink: "",
             infoLink: "",
             canonicalVolumeLink: "canonicalVolumeLink",
+            dimensions: Dimensions(
+              height: "",
+              width: "",
+              thickness: "",
+            ),
           ),
           saleInfo: SaleInfo(
             country: "EG",
@@ -94,11 +100,11 @@ void main() {
 
   test("Get Free Books should return Success with Books Model", () async {
     when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
-        subject, startIndex, maxResults, orderBy))
+            subject, startIndex, maxResults, orderBy))
         .thenAnswer((_) async => booksModel);
 
     final ApiResult<List<BookItemModel>> result =
-    await homeRepository.getRecentlyAddedComputerBooks(
+        await homeRepository.getRecentlyAddedComputerBooks(
       RecentlyAddedBooksParameters(
         subject: subject,
         startIndex: startIndex,
@@ -123,7 +129,7 @@ void main() {
     );
 
     when(mockHomeRemoteDataSource.getRecentlyAddedComputerBooks(
-        subject, startIndex, maxResults, orderBy))
+            subject, startIndex, maxResults, orderBy))
         .thenThrow(dioError);
 
     final ApiResult<List<BookItemModel>> result = await homeRepository
