@@ -27,10 +27,10 @@ class HomeScreenSkeletonLoading extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Skeletonizer(child: HomeAppBar()),
+                const HomeAppBar(),
                 verticalSpace(30),
-                const Skeletonizer(child: HomeWelcomeBody()),
-                const Skeletonizer(child: HomeSearchView()),
+                const HomeWelcomeBody(),
+                const HomeSearchView(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -56,10 +56,11 @@ class HomeScreenSkeletonLoading extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return const Skeletonizer(
                           child: RecentlyAddedBookItem(
-                            itemImage: '',
-                            itemTitle: 'Loading...',
-                            itemAuthor: ['Loading...'],
-                            itemDescription: 'Loading...',
+                            itemImage: 'Loading..................',
+                            itemTitle: 'Loading..................',
+                            itemAuthor: ['Loading..................'],
+                            itemDescription:
+                                'Loading..........................\nLoading..........................\nLoading..........................',
                             itemId: 'Loading...',
                           ),
                         );
