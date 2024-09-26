@@ -1,3 +1,4 @@
+import 'package:e_book_store/core/layout/app_layout.dart';
 import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/features/book/book_screen.dart';
 import 'package:e_book_store/features/book/presentation/controllers/book_cubit.dart';
@@ -14,6 +15,11 @@ class AppRouter {
     final arguments = settings.arguments;
 
     switch (settings.name) {
+      case Routes.initial:
+        return MaterialPageRoute(
+          builder: (_) => const AppLayout(),
+        );
+
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
@@ -33,7 +39,8 @@ class AppRouter {
         if (arguments is String) {
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
-              create: (_) => sl<BookCubit>()..showCategoriesFromBook('subject:"$arguments"'),
+              create: (_) => sl<BookCubit>()
+                ..showCategoriesFromBook('subject:"$arguments"'),
               child: CategoryScreen(
                 categoryTitle: arguments,
               ),

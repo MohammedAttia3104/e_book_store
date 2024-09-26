@@ -1,3 +1,5 @@
+import 'package:e_book_store/core/layout/app_layout.dart';
+import 'package:e_book_store/core/layout/controllers/bottom_nav_bar_cubit.dart';
 import 'package:e_book_store/core/routing/app_router.dart';
 import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/core/theming/controllers/app_theme_cubit.dart';
@@ -22,6 +24,13 @@ class EBookStore extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<AppThemeCubit>(
+          create: (_) =>
+              sl<AppThemeCubit>()..changeAppTheme(ThemeState.initial),
+        ),
+        BlocProvider<BottomNavBarCubit>(
+          create: (_) => BottomNavBarCubit(),
+        ),
         BlocProvider<HomeCubit>(
           create: (_) => sl<HomeCubit>()
             ..getRecentlyAddedBooks(
@@ -32,10 +41,6 @@ class EBookStore extends StatelessWidget {
                 orderBy: 'newest',
               ),
             ),
-        ),
-        BlocProvider<AppThemeCubit>(
-          create: (_) =>
-              sl<AppThemeCubit>()..changeAppTheme(ThemeState.initial),
         ),
       ],
       child: ScreenUtilInit(
@@ -51,12 +56,12 @@ class EBookStore extends StatelessWidget {
               theme = lightTheme;
             }
             return MaterialApp(
-              initialRoute: Routes.homeScreen,
+              initialRoute: Routes.initial,
               onGenerateRoute: appRouter.generateRoute,
               navigatorObservers: [NavigatorObserver()],
               debugShowCheckedModeBanner: false,
               theme: theme,
-              home: const HomeScreen(),
+              home: const AppLayout(),
             );
           },
         ),
