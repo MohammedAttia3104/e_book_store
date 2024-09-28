@@ -26,7 +26,8 @@ class BookDetailsRepositoryImpl implements BookDetailsRepository {
   }
 
   @override
-  Future<ApiResult<List<BookItemModel>>> showCategoriesFromBook(String category) async {
+  Future<ApiResult<List<BookItemModel>>> showCategoriesFromBook(
+      String category) async {
     try {
       final booksFromCategory =
           await bookRemoteDataSource.showCategoriesFromBook(category);
