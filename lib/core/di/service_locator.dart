@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 import 'package:e_book_store/core/networking/dio_factory.dart';
 import 'package:e_book_store/features/book/data/data_source/book_remote_data_source.dart';
 import 'package:e_book_store/features/book/data/repository/book_details_repository.dart';
+import 'package:e_book_store/features/explore/data/data_sources/explore_remote_data_source.dart';
+import 'package:e_book_store/features/explore/data/repositories/explore_repository.dart';
+import 'package:e_book_store/features/explore/presentation/controllers/explore_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../features/book/presentation/controllers/book_cubit.dart';
@@ -34,4 +37,15 @@ void setUpServiceLocator() {
   );
 
   sl.registerFactory<BookCubit>(() => BookCubit(sl()));
+
+  //Explore
+  sl.registerLazySingleton<ExploreRemoteDataSource>(
+    () => ExploreRemoteDataSource(sl()),
+  );
+
+  sl.registerLazySingleton<ExploreRepository>(
+    () => ExploreRepositoryImpl(exploreRemoteDataSource: sl()),
+  );
+
+  sl.registerFactory<ExploreCubit>(() => ExploreCubit(sl()));
 }

@@ -82,9 +82,9 @@ class AppStyles {
     color: AppColors.gray,
   );
 
-  static TextStyle font16GrayMedium = TextStyle(
+  static TextStyle font16GrayBold = TextStyle(
     fontSize: 16.sp,
-    fontWeight: FontWeightHelper.medium,
+    fontWeight: FontWeightHelper.bold,
     color: AppColors.gray,
   );
 }

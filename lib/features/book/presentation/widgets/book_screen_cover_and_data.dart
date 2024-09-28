@@ -50,7 +50,7 @@ class BookScreenCoverAndData extends StatelessWidget {
                       ),
                       Text(
                         book.volumeInfo.authors?.first ?? '',
-                        style: AppStyles.font16GrayMedium,
+                        style: AppStyles.font16GrayBold,
                       ),
                       verticalSpace(5),
                       const BookCategoryWrap(),

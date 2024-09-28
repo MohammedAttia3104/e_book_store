@@ -23,7 +23,6 @@ class _ExpandableTextState extends State<ExpandableText> {
       builder: (context, constraints) {
         final span = TextSpan(
           text: widget.text,
-          style: AppStyles.font16SecondaryMedium,
         );
 
         final tp = TextPainter(
@@ -40,7 +39,6 @@ class _ExpandableTextState extends State<ExpandableText> {
             children: [
               HtmlWidget(
                 widget.text,
-                textStyle: AppStyles.font16SecondaryMedium,
                 customStylesBuilder: (element) {
                   return {
                     'max-lines': '${widget.maxLines}',
@@ -67,7 +65,6 @@ class _ExpandableTextState extends State<ExpandableText> {
         } else {
           return HtmlWidget(
             widget.text,
-            textStyle: AppStyles.font16SecondaryMedium,
           );
         }
       },

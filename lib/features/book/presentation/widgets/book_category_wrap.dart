@@ -33,18 +33,22 @@ class BookCategoryWrap extends StatelessWidget {
     );
   }
 
-  Wrap _getBookCategorySuccessData(BookItemModel book) {
+  Widget _getBookCategorySuccessData(BookItemModel book) {
     List<String>? loadedCategories = book.volumeInfo.categories;
-    List<String>? categories = loadedCategories;
-    final uniqueCategories = categories
-        ?.map((category) => category.split(' / ').first)
+    if (loadedCategories == null || loadedCategories.isEmpty) {
+      return const SizedBox.shrink();
+    }
+
+    final uniqueCategories = loadedCategories
+        .map((category) => category.split(' / ').first)
         .toSet()
         .toList();
+
     return Wrap(
       spacing: 10.w,
       runSpacing: 5.h,
-      children: uniqueCategories!.map(
-        (category) {
+      children: uniqueCategories.map(
+            (category) {
           return BlocBuilder<AppThemeCubit, AppThemeState>(
             builder: (context, state) {
               final isDarkTheme = state is AppThemeDarkState;
