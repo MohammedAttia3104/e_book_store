@@ -22,14 +22,15 @@ class HomeRecentlyAddedBooks extends StatelessWidget {
           current is RecentlyAddedBooksLoadingState ||
           current is RecentlyAddedBooksSuccessState,
       builder: (context, state) {
-        return state.when(
-          initial: () => const SizedBox.shrink(),
-          recentlyAddedBooksLoadingState: () => const SizedBox.shrink(),
+        return state.maybeWhen(
           recentlyAddedBooksSuccessState: (BooksModel books) {
             return _showRecentlyAddedBooksData(books);
           },
           recentlyAddedBooksErrorState: (message) {
             return _showRecentlyAddedBooksErrorState(message);
+          },
+          orElse: () {
+            return const SizedBox.shrink();
           },
         );
       },

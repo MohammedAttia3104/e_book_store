@@ -6,7 +6,6 @@ import 'package:e_book_store/features/book/presentation/widgets/book_key_value_p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/theming/app_colors.dart';
 import '../../../home/data/models/book_item_model.dart';
 
 class BookDetailsDataPart extends StatelessWidget {
@@ -27,6 +26,7 @@ class BookDetailsDataPart extends StatelessWidget {
   }
 
   Widget _getBookDetails(BookItemModel book) {
+    debugPrint(" Boxxxxxxxxxxxxxxxxxxxxxxxxx  : ${book.volumeInfo.description}");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -43,17 +43,14 @@ class BookDetailsDataPart extends StatelessWidget {
           children: [
             Text(
               'Publisher: ',
-              style: AppStyles.font16GrayMedium,
+              style: AppStyles.font16GrayBold,
             ),
-            Text(
-              book.volumeInfo.publisher ?? 'N/A',
-              style: AppStyles.font16BlueMedium,
-            ),
-            horizontalSpace(4),
-            const Icon(
-              Icons.arrow_forward_ios,
-              size: 16,
-              color: AppColors.mainBlue,
+            Expanded(
+              child: Text(
+                book.volumeInfo.publisher ?? 'N/A',
+                style: AppStyles.font16BlueMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
@@ -72,11 +69,14 @@ class BookDetailsDataPart extends StatelessWidget {
           children: [
             Text(
               'Dimensions: ',
-              style: AppStyles.font16GrayMedium,
+              style: AppStyles.font16GrayBold,
             ),
-            Text(
-              '${book.volumeInfo.dimensions?.height ?? 'N/A'} x ${book.volumeInfo.dimensions?.width ?? 'N/A'} x ${book.volumeInfo.dimensions?.thickness ?? 'N/A'}',
-              style: AppStyles.font16BlueMedium,
+            Expanded(
+              child: Text(
+                '${book.volumeInfo.dimensions?.height ?? 'N/A'} x ${book.volumeInfo.dimensions?.width ?? 'N/A'} x ${book.volumeInfo.dimensions?.thickness ?? 'N/A'}',
+                style: AppStyles.font16BlueMedium,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ],
         ),
