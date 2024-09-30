@@ -11,13 +11,9 @@ class BookCoverImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return FancyShimmerImage(
       imageUrl: imageUrl,
-      errorWidget: const Icon(Icons.error),
-      shimmerBaseColor: Colors.greenAccent,
-      shimmerHighlightColor: Colors.grey,
-      shimmerBackColor: Colors.greenAccent,
       height: 250.h,
       width: MediaQuery.sizeOf(context).width * 0.4,
-      boxFit: BoxFit.contain,
+      boxFit: BoxFit.cover,
     );
   }
 }

@@ -1,5 +1,4 @@
 import 'package:e_book_store/core/extensions/navigation_extension.dart';
-import 'package:e_book_store/core/routing/app_router.dart';
 import 'package:e_book_store/core/routing/routes.dart';
 import 'package:e_book_store/core/theming/app_colors.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
@@ -11,7 +10,6 @@ import 'package:e_book_store/features/home/data/models/book_item_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class BookCategoryWrap extends StatelessWidget {
   const BookCategoryWrap({
