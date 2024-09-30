@@ -16,17 +16,17 @@ class BookScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const BookScreenAppBar(),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
-          child: BlocBuilder<BookCubit, BookState>(
-            builder: (context, state) {
-              return state.maybeWhen(
-                bookDetailsLoading: () => const BookScreenLoadingState(),
-                bookDetailsSuccess: (book) {
-                  return Column(
+    return BlocBuilder<BookCubit, BookState>(
+      builder: (context, state) {
+        return state.maybeWhen(
+          bookDetailsLoading: () => const BookScreenLoadingState(),
+          bookDetailsSuccess: (book) {
+            return Scaffold(
+              appBar: BookScreenAppBar(book: book,),
+              body: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
+                  child:  Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       const BookScreenCoverAndData(),
@@ -38,32 +38,32 @@ class BookScreen extends StatelessWidget {
                       const BookReadPreviewsAndDownload(),
                       verticalSpace(30),
                     ],
-                  );
-                },
-                bookDetailsFailure: (message) {
-                  return AlertDialog(
-                    title: Icon(
-                      Icons.error,
-                      color: Colors.red,
-                      size: 40.r,
-                    ),
-                    content: Text(message),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: const Text('OK'),
-                      ),
-                    ],
-                  );
-                },
-                orElse: () => const SizedBox.shrink(),
-              );
+                  ),
+                ),
+              ),
+            );
             },
-          ),
-        ),
-      ),
+          bookDetailsFailure: (message) {
+            return AlertDialog(
+              title: Icon(
+                Icons.error,
+                color: Colors.red,
+                size: 40.r,
+              ),
+              content: Text(message),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+          orElse: () => const SizedBox.shrink(),
+        );
+      },
     );
   }
 }

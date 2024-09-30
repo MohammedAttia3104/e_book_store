@@ -1,4 +1,5 @@
 import 'package:e_book_store/features/home/presentation/widgets/recently_added_book_item.dart';
+import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -54,14 +55,65 @@ class HomeScreenSkeletonLoading extends StatelessWidget {
                       physics: const NeverScrollableScrollPhysics(),
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
-                        return const Skeletonizer(
-                          child: RecentlyAddedBookItem(
-                            itemImage: 'Loading..................',
-                            itemTitle: 'Loading..................',
-                            itemAuthor: ['Loading..................'],
-                            itemDescription:
-                                'Loading..........................\nLoading..........................\nLoading..........................',
-                            itemId: 'Loading...',
+                        return Skeletonizer(
+                          child: SizedBox(
+                            height: 200.h,
+                            width: double.maxFinite,
+                            child: Row(
+                              children: [
+                                SizedBox(
+                                  height: 200.h,
+                                  width: 150.w,
+                                  child: FancyShimmerImage(
+                                    imageUrl:  'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                    errorWidget: const Icon(
+                                      Icons.error,
+                                      color: Colors.red,
+                                    ),
+                                    shimmerBaseColor: Colors.greenAccent,
+                                    shimmerHighlightColor: Colors.grey,
+                                    shimmerBackColor: Colors.greenAccent,
+                                  ),
+                                ),
+                                horizontalSpace(10),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      BlocBuilder<AppThemeCubit, AppThemeState>(
+                                        builder: (context, state) {
+                                          final isDarkTheme = state is AppThemeDarkState;
+                                          return Text(
+                                            'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                            style: AppStyles.font20BlackBold.copyWith(
+                                              color: isDarkTheme
+                                                  ? AppColors.whiteColor
+                                                  : AppColors.blackColor,
+                                            ),
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                          );
+                                        },
+                                      ),
+                                      verticalSpace(4),
+                                      Text(
+                                        'ABCDEFGHIJKLM',
+                                        style: AppStyles.font16BlueMedium,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                      verticalSpace(6),
+                                      Text(
+                                        'ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: AppStyles.font14GrayRegular,
+                                        maxLines: 3,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         );
                       },

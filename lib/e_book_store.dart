@@ -12,6 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/di/service_locator.dart';
 import 'core/enums/theme_states.dart';
 import 'core/theming/app_themes.dart';
+import 'features/favorite/presentation/controllers/favorite_cubit.dart';
 import 'features/home/data/repositories/home_repository.dart';
 import 'features/home/presentation/controllers/home_cubit.dart';
 
@@ -41,6 +42,9 @@ class EBookStore extends StatelessWidget {
                 orderBy: 'newest',
               ),
             ),
+        ),
+        BlocProvider<FavoriteCubit>(
+          create: (context) => FavoriteCubit()..getFavoriteBooks(),
         ),
       ],
       child: ScreenUtilInit(
