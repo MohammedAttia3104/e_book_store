@@ -17,7 +17,7 @@ class BookKeyAndValuePairs extends StatelessWidget {
       children: [
         Text(
           pair,
-          style: AppStyles.font16GrayMedium,
+          style: AppStyles.font16GrayBold,
         ),
         Expanded(
           child: RichText(

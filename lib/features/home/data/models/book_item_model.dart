@@ -1,30 +1,36 @@
 import 'package:e_book_store/features/home/data/models/sale_info.dart';
 import 'package:e_book_store/features/home/data/models/volume_info.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:hive/hive.dart';
 
 import 'access_info.dart';
 
 part 'book_item_model.g.dart';
 
 @JsonSerializable()
+@HiveType(typeId: 0)
 class BookItemModel {
   @JsonKey(name: "kind")
+  @HiveField(0)
   final String? kind;
   @JsonKey(name: "id")
+  @HiveField(1)
   final String? id;
   @JsonKey(name: "etag")
+  @HiveField(2)
   final String? etag;
   @JsonKey(name: "selfLink")
+  @HiveField(3)
   final String? selfLink;
   @JsonKey(name: "volumeInfo")
+  @HiveField(4)
   final VolumeInfo volumeInfo;
   @JsonKey(name: "saleInfo")
+  @HiveField(5)
   final SaleInfo saleInfo;
   @JsonKey(name: "accessInfo")
+  @HiveField(6)
   final AccessInfo accessInfo;
-
-  // @JsonKey(name: "searchInfo")
-  // final SearchInfo searchInfo;
 
   BookItemModel({
     this.kind,
@@ -34,7 +40,6 @@ class BookItemModel {
     required this.volumeInfo,
     required this.saleInfo,
     required this.accessInfo,
-    // required this.searchInfo,
   });
 
   factory BookItemModel.fromJson(Map<String, dynamic> json) =>

@@ -1,33 +1,29 @@
-import 'package:e_book_store/core/extensions/navigation_extension.dart';
+import 'package:e_book_store/features/favorite/presentation/widgets/favorite_app_bar.dart';
+import 'package:e_book_store/features/favorite/presentation/widgets/favorite_list_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../core/theming/font_weight_helper.dart';
+import 'controllers/favorite_cubit.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    context.read<FavoriteCubit>().getFavoriteBooks();
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new),
-          onPressed: () {
-            context.pop();
-          },
-        ),
-        title: Text(
-          'Favorites',
-          style: TextStyle(
-            fontSize: 24.sp,
-            fontWeight: FontWeightHelper.medium,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: const Center(
-        child: Text('Favorites'),
+      appBar: const FavoriteAppBar(),
+      body: BlocBuilder<FavoriteCubit, FavoriteState>(
+        builder: (context, state) {
+          return state.maybeWhen(
+            favoriteLoadedSuccessfully: (books) {
+              return FavoriteListView(books: books);
+            },
+            orElse: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        },
       ),
     );
   }

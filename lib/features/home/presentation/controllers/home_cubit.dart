@@ -14,19 +14,20 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit(this.homeRepository) : super(const HomeState.initial());
 
   Future<void> getRecentlyAddedBooks(
-      RecentlyAddedBooksParameters  recentlyAddedParameters) async {
+      RecentlyAddedBooksParameters recentlyAddedParameters) async {
     emit(const HomeState.recentlyAddedBooksLoadingState());
-    final response =
-        await homeRepository.getRecentlyAddedComputerBooks(recentlyAddedParameters);
-    response.when(
-      success: (List<BookItemModel> books) {
-        emit(HomeState.recentlyAddedBooksSuccessState(BooksModel(items: books)));
-      },
-      failure: (String message) {
-        log('Error: $message');
-        debugPrint(message);
-        emit(HomeState.recentlyAddedBooksErrorState(message));
-      },
-    );
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      final response = await homeRepository.getRecentlyAddedComputerBooks(recentlyAddedParameters);
+      response.when(
+        success: (List<BookItemModel> books) {
+          emit(HomeState.recentlyAddedBooksSuccessState(BooksModel(items: books)));
+        },
+        failure: (String message) {
+          log('Error: $message');
+          debugPrint(message);
+          emit(HomeState.recentlyAddedBooksErrorState(message));
+        },
+      );
+    });
   }
 }
