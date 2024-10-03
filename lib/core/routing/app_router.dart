@@ -42,7 +42,7 @@ class AppRouter {
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
               create: (_) => sl<BookCubit>()
-                ..showCategoriesFromBook('subject:"$arguments"'),
+                ..showCategoriesFromBook(category: 'subject:"$arguments"'),
               child: CategoryScreen(
                 categoryTitle: arguments,
               ),

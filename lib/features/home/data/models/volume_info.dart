@@ -29,10 +29,10 @@ class VolumeInfo {
   final String? description;
   @JsonKey(name: "readingModes")
   @HiveField(6)
-  final ReadingModes readingModes;
+  final ReadingModes? readingModes;
   @JsonKey(name: "pageCount")
   @HiveField(7)
-  final int pageCount;
+  final int? pageCount;
   @JsonKey(name: "printType")
   @HiveField(8)
   final String? printType;
@@ -44,16 +44,16 @@ class VolumeInfo {
   final String? maturityRating;
   @JsonKey(name: "allowAnonLogging")
   @HiveField(11)
-  final bool allowAnonLogging;
+  final bool? allowAnonLogging;
   @JsonKey(name: "dimensions")
   @HiveField(12)
   final Dimensions? dimensions;
   @JsonKey(name: "contentVersion")
   @HiveField(13)
-  final String contentVersion;
+  final String? contentVersion;
   @JsonKey(name: "imageLinks")
   @HiveField(14)
-  final ImageLinks imageLinks;
+  final ImageLinks? imageLinks;
   @JsonKey(name: "language")
   @HiveField(15)
   final String? language;
@@ -68,22 +68,22 @@ class VolumeInfo {
   final String? canonicalVolumeLink;
 
   VolumeInfo({
-    required this.dimensions,
-    required this.title,
+    this.dimensions,
+    this.title,
     this.subtitle,
     this.authors,
     this.publisher,
     this.publishedDate,
     this.description,
-    required this.readingModes,
-    required this.pageCount,
-    required this.printType,
+    this.readingModes,
+    this.pageCount,
+    this.printType,
     this.categories,
     this.maturityRating,
-    required this.allowAnonLogging,
-    required this.contentVersion,
-    required this.imageLinks,
-    required this.language,
+    this.allowAnonLogging,
+    this.contentVersion,
+    this.imageLinks,
+    this.language,
     this.previewLink,
     this.infoLink,
     this.canonicalVolumeLink,

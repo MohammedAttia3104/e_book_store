@@ -42,7 +42,7 @@ class FavoriteListItem extends StatelessWidget {
       onDismissed: (direction) {
         context.read<FavoriteCubit>().removeFavorite(book.id.toString());
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('${book.volumeInfo.title} dismissed')),
+          SnackBar(content: Text('${book.volumeInfo?.title} dismissed')),
         );
       },
       background: _buildDismissBackground(Alignment.centerLeft),

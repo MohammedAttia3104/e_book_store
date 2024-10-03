@@ -27,7 +27,7 @@ class BookScreenCoverAndData extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 BookCoverImage(
-                  imageUrl: book.volumeInfo.imageLinks.thumbnail ?? "",
+                  imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? "",
                 ),
                 horizontalSpace(12),
                 Flexible(
@@ -39,7 +39,7 @@ class BookScreenCoverAndData extends StatelessWidget {
                         builder: (context, state) {
                           final isDarkTheme = state is AppThemeDarkState;
                           return Text(
-                            book.volumeInfo.title ?? '',
+                            book.volumeInfo?.title ?? '',
                             style: AppStyles.font24BlackBold.copyWith(
                               color: isDarkTheme
                                   ? AppColors.whiteColor
@@ -49,7 +49,7 @@ class BookScreenCoverAndData extends StatelessWidget {
                         },
                       ),
                       Text(
-                        book.volumeInfo.authors?.first ?? '',
+                        book.volumeInfo?.authors?.first ?? '',
                         style: AppStyles.font16GrayBold,
                       ),
                       verticalSpace(5),

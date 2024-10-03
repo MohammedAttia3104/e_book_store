@@ -57,9 +57,17 @@ class _BookRemoteDataSource implements BookRemoteDataSource {
   }
 
   @override
-  Future<BooksModel> showCategoriesFromBook(String category) async {
+  Future<BooksModel> showCategoriesFromBook(
+    String category,
+    int maxResults,
+    int startIndex,
+  ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'q': category};
+    final queryParameters = <String, dynamic>{
+      r'q': category,
+      r'maxResults': maxResults,
+      r'startIndex': startIndex,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<BooksModel>(Options(

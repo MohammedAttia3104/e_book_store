@@ -26,7 +26,7 @@ class BookDetailsDataPart extends StatelessWidget {
   }
 
   Widget _getBookDetails(BookItemModel book) {
-    debugPrint(" Boxxxxxxxxxxxxxxxxxxxxxxxxx  : ${book.volumeInfo.description}");
+    debugPrint(" Boxxxxxxxxxxxxxxxxxxxxxxxxx  : ${book.volumeInfo?.description}");
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +47,7 @@ class BookDetailsDataPart extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                book.volumeInfo.publisher ?? 'N/A',
+                book.volumeInfo?.publisher ?? 'N/A',
                 style: AppStyles.font16BlueMedium,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -57,12 +57,12 @@ class BookDetailsDataPart extends StatelessWidget {
         verticalSpace(5),
         BookKeyAndValuePairs(
           pair: 'Published Date: ',
-          value: [book.volumeInfo.publishedDate ?? 'N/A'],
+          value: [book.volumeInfo?.publishedDate ?? 'N/A'],
         ),
         verticalSpace(5),
         BookKeyAndValuePairs(
           pair: 'Pages Number: ',
-          value: [book.volumeInfo.pageCount.toString()],
+          value: [book.volumeInfo!.pageCount.toString() ?? 'N/A'],
         ),
         verticalSpace(5),
         Row(
@@ -73,7 +73,7 @@ class BookDetailsDataPart extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                '${book.volumeInfo.dimensions?.height ?? 'N/A'} x ${book.volumeInfo.dimensions?.width ?? 'N/A'} x ${book.volumeInfo.dimensions?.thickness ?? 'N/A'}',
+                '${book.volumeInfo?.dimensions?.height ?? 'N/A'} x ${book.volumeInfo?.dimensions?.width ?? 'N/A'} x ${book.volumeInfo?.dimensions?.thickness ?? 'N/A'}',
                 style: AppStyles.font16BlueMedium,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -83,7 +83,7 @@ class BookDetailsDataPart extends StatelessWidget {
         verticalSpace(5),
         BookKeyAndValuePairs(
           pair: 'Author(s): ',
-          value: book.volumeInfo.authors ?? ['N/A'],
+          value: book.volumeInfo?.authors ?? ['N/A'],
         ),
       ],
     );

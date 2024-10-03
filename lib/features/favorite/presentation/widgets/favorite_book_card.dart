@@ -37,7 +37,7 @@ class FavoriteBookCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               FancyShimmerImage(
-                imageUrl: book.volumeInfo.imageLinks.thumbnail ?? '',
+                imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? '',
                 width: 150.w,
                 height: 200.h,
                 boxFit: BoxFit.cover,
@@ -51,7 +51,7 @@ class FavoriteBookCard extends StatelessWidget {
                       builder: (context, state) {
                         final isDarkTheme = state is AppThemeDarkState;
                         return Text(
-                          book.volumeInfo.title ?? '',
+                          book.volumeInfo?.title ?? '',
                           style: AppStyles.font24BlackBold.copyWith(
                             fontSize: 20.sp,
                             color: isDarkTheme
@@ -64,9 +64,9 @@ class FavoriteBookCard extends StatelessWidget {
                       },
                     ),
                     verticalSpace(4),
-                    if (!book.volumeInfo.authors!.isNullOrEmpty())
+                    if (!book.volumeInfo!.authors!.isNullOrEmptyList())
                       Text(
-                        'by ${book.volumeInfo.authors?.first ?? 'N/A'}',
+                        'by ${book.volumeInfo?.authors?.first ?? 'N/A'}',
                         style: AppStyles.font16GrayBold,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,

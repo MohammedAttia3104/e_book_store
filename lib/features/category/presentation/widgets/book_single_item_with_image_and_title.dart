@@ -25,7 +25,7 @@ class BookSingleItemWithImageAndTitle extends StatelessWidget {
         child: Column(
           children: [
             FancyShimmerImage(
-              imageUrl: book.volumeInfo.imageLinks.thumbnail ?? '',
+              imageUrl: book.volumeInfo?.imageLinks?.thumbnail ?? '',
               boxFit: BoxFit.cover,
               errorWidget: const Icon(Icons.error),
               width: MediaQuery.sizeOf(context).width * 0.25,
@@ -36,7 +36,7 @@ class BookSingleItemWithImageAndTitle extends StatelessWidget {
             ),
             verticalSpace(8),
             Text(
-              book.volumeInfo.title ?? '',
+              book.volumeInfo?.title ?? 'N/A',
               textAlign: TextAlign.center,
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
