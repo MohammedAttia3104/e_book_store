@@ -43,7 +43,10 @@ class RecentlyAddedBookItem extends StatelessWidget {
               width: 150.w,
               child: FancyShimmerImage(
                 imageUrl: itemImage ?? '',
-                errorWidget: Image.network('Network image goes here '),
+                errorWidget: const Icon(
+                  Icons.error,
+                  color: Colors.red,
+                ),
                 shimmerBaseColor: Colors.greenAccent,
                 shimmerHighlightColor: Colors.grey,
                 shimmerBackColor: Colors.greenAccent,

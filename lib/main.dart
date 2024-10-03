@@ -6,11 +6,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/routing/app_router.dart';
 import 'core/utils/my_bloc_observer.dart';
+import 'features/favorite/data/hive_init.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setUpServiceLocator();
   Bloc.observer = MyBlocObserver();
   await ScreenUtil.ensureScreenSize();
+  await initHive();
   runApp(EBookStore(appRouter: AppRouter()));
 }

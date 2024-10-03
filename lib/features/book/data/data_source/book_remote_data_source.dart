@@ -22,5 +22,7 @@ abstract class BookRemoteDataSource {
   @GET(ApiConstants.booksEP)
   Future<BooksModel> showCategoriesFromBook(
     @Query('q') String category,
+    @Query('maxResults') int maxResults,
+    @Query('startIndex') int startIndex,
   );
 }

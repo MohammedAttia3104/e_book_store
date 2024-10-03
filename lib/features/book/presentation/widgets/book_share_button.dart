@@ -33,7 +33,7 @@ class BookShareButton extends StatelessWidget {
                     isDarkTheme ? Assets.svgsWhiteShare : Assets.svgsBlackShare,
                   ),
                   onPressed: () async {
-                    final bookImageUrl = book.volumeInfo.imageLinks.thumbnail;
+                    final bookImageUrl = book.volumeInfo?.imageLinks?.thumbnail;
                     if (bookImageUrl != null) {
                       try {
                         await _shareBookContent(bookImageUrl, book);
@@ -78,14 +78,14 @@ class BookShareButton extends StatelessWidget {
     File filePath = await _downloadAndSaveImageLocal(bookImageUrl);
 
     final String content = '''
-Check out ${book.volumeInfo.title} book on our E-Book Store:
-    ${book.volumeInfo.previewLink}
+Check out ${book.volumeInfo?.title} book on our E-Book Store:
+    ${book.volumeInfo?.previewLink}
     ''';
 
     Share.shareXFiles(
       [XFile(filePath.path)],
       text: content,
-      subject: book.volumeInfo.title,
+      subject: book.volumeInfo?.title,
     );
   }
 

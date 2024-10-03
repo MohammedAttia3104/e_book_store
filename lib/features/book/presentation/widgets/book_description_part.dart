@@ -20,8 +20,8 @@ class BookDescriptionPart extends StatelessWidget {
       builder: (context, state) {
         return state.maybeWhen(
           bookDetailsSuccess: (book) {
-            return book.volumeInfo.description != null &&
-                    book.volumeInfo.description!.isNotEmpty
+            return book.volumeInfo?.description != null &&
+                    book.volumeInfo!.description!.isNotEmpty
                 ? Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -36,7 +36,7 @@ class BookDescriptionPart extends StatelessWidget {
                       ),
                       verticalSpace(10),
                       ExpandableText(
-                        text: book.volumeInfo.description!,
+                        text: book.volumeInfo!.description!,
                         maxLines: 7,
                       ),
                     ],

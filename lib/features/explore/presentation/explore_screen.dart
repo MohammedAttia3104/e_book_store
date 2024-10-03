@@ -37,16 +37,23 @@ class _ExploreScreenContentState extends State<ExploreScreenContent> {
     "Political Science",
   ];
 
+  bool _isLoading = true;
+
   @override
   void initState() {
     super.initState();
     _fetchInitialCategories();
   }
 
-  void _fetchInitialCategories() {
-    for (var category in categories) {
-      context.read<ExploreCubit>().fetchExploredCategories(category: category);
-    }
+  void _fetchInitialCategories() async {
+    await Future.wait(categories.map((category) {
+      return context
+          .read<ExploreCubit>()
+          .fetchExploredCategories(category: category);
+    }));
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override
@@ -62,7 +69,9 @@ class _ExploreScreenContentState extends State<ExploreScreenContent> {
         ),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
           child: Column(
@@ -79,8 +88,11 @@ class _ExploreScreenContentState extends State<ExploreScreenContent> {
   Widget _buildCategorySection(String category) {
     return BlocProvider(
       create: (context) =>
-          sl<ExploreCubit>()..fetchExploredCategories(category: category),
+      sl<ExploreCubit>()..fetchExploredCategories(category: category),
       child: CategorySection(category: category),
     );
   }
 }
+
+
+

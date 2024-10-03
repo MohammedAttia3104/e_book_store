@@ -20,7 +20,7 @@ class CategoryScreen extends StatelessWidget {
           },
         ),
       ),
-      body: const CategoryScreenBodyBuilder(),
+      body: CategoryScreenBodyBuilder(category: categoryTitle),
     );
   }
 }
