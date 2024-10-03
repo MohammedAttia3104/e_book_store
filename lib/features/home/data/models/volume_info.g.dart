@@ -24,14 +24,14 @@ class VolumeInfoAdapter extends TypeAdapter<VolumeInfo> {
       publisher: fields[3] as String?,
       publishedDate: fields[4] as String?,
       description: fields[5] as String?,
-      readingModes: fields[6] as ReadingModes,
-      pageCount: fields[7] as int,
+      readingModes: fields[6] as ReadingModes?,
+      pageCount: fields[7] as int?,
       printType: fields[8] as String?,
       categories: (fields[9] as List?)?.cast<String>(),
       maturityRating: fields[10] as String?,
-      allowAnonLogging: fields[11] as bool,
-      contentVersion: fields[13] as String,
-      imageLinks: fields[14] as ImageLinks,
+      allowAnonLogging: fields[11] as bool?,
+      contentVersion: fields[13] as String?,
+      imageLinks: fields[14] as ImageLinks?,
       language: fields[15] as String?,
       previewLink: fields[16] as String?,
       infoLink: fields[17] as String?,
@@ -109,18 +109,20 @@ VolumeInfo _$VolumeInfoFromJson(Map<String, dynamic> json) => VolumeInfo(
       publisher: json['publisher'] as String?,
       publishedDate: json['publishedDate'] as String?,
       description: json['description'] as String?,
-      readingModes:
-          ReadingModes.fromJson(json['readingModes'] as Map<String, dynamic>),
-      pageCount: (json['pageCount'] as num).toInt(),
+      readingModes: json['readingModes'] == null
+          ? null
+          : ReadingModes.fromJson(json['readingModes'] as Map<String, dynamic>),
+      pageCount: (json['pageCount'] as num?)?.toInt(),
       printType: json['printType'] as String?,
       categories: (json['categories'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
       maturityRating: json['maturityRating'] as String?,
-      allowAnonLogging: json['allowAnonLogging'] as bool,
-      contentVersion: json['contentVersion'] as String,
-      imageLinks:
-          ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
+      allowAnonLogging: json['allowAnonLogging'] as bool?,
+      contentVersion: json['contentVersion'] as String?,
+      imageLinks: json['imageLinks'] == null
+          ? null
+          : ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
       language: json['language'] as String?,
       previewLink: json['previewLink'] as String?,
       infoLink: json['infoLink'] as String?,

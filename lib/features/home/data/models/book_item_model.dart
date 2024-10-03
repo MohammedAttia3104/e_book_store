@@ -24,22 +24,22 @@ class BookItemModel {
   final String? selfLink;
   @JsonKey(name: "volumeInfo")
   @HiveField(4)
-  final VolumeInfo volumeInfo;
+  final VolumeInfo? volumeInfo;
   @JsonKey(name: "saleInfo")
   @HiveField(5)
-  final SaleInfo saleInfo;
+  final SaleInfo? saleInfo;
   @JsonKey(name: "accessInfo")
   @HiveField(6)
-  final AccessInfo accessInfo;
+  final AccessInfo? accessInfo;
 
   BookItemModel({
     this.kind,
     this.id,
     this.etag,
     this.selfLink,
-    required this.volumeInfo,
-    required this.saleInfo,
-    required this.accessInfo,
+    this.volumeInfo,
+    this.saleInfo,
+    this.accessInfo,
   });
 
   factory BookItemModel.fromJson(Map<String, dynamic> json) =>

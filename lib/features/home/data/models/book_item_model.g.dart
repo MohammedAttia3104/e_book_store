@@ -21,9 +21,9 @@ class BookItemModelAdapter extends TypeAdapter<BookItemModel> {
       id: fields[1] as String?,
       etag: fields[2] as String?,
       selfLink: fields[3] as String?,
-      volumeInfo: fields[4] as VolumeInfo,
-      saleInfo: fields[5] as SaleInfo,
-      accessInfo: fields[6] as AccessInfo,
+      volumeInfo: fields[4] as VolumeInfo?,
+      saleInfo: fields[5] as SaleInfo?,
+      accessInfo: fields[6] as AccessInfo?,
     );
   }
 
@@ -68,11 +68,15 @@ BookItemModel _$BookItemModelFromJson(Map<String, dynamic> json) =>
       id: json['id'] as String?,
       etag: json['etag'] as String?,
       selfLink: json['selfLink'] as String?,
-      volumeInfo:
-          VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
-      saleInfo: SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
-      accessInfo:
-          AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
+      volumeInfo: json['volumeInfo'] == null
+          ? null
+          : VolumeInfo.fromJson(json['volumeInfo'] as Map<String, dynamic>),
+      saleInfo: json['saleInfo'] == null
+          ? null
+          : SaleInfo.fromJson(json['saleInfo'] as Map<String, dynamic>),
+      accessInfo: json['accessInfo'] == null
+          ? null
+          : AccessInfo.fromJson(json['accessInfo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$BookItemModelToJson(BookItemModel instance) =>

@@ -36,12 +36,12 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   void toggleFavorite(BookItemModel book) {
     if (favoriteBooks.any((bookModel) => bookModel.id == book.id)) {
       favoriteBooks.remove(book);
-      debugPrint("Favorite Book * ${book.volumeInfo.title} * Removed");
+      debugPrint("Favorite Book * ${book.volumeInfo?.title} * Removed");
       favoriteBooks.removeWhere((bookModel) => bookModel.id == book.id);
       Hive.box<BookItemModel>(kBookItemBox).delete(book.id);
     } else {
       favoriteBooks.add(book);
-      debugPrint("Favorite Book * ${book.volumeInfo.title} * Added");
+      debugPrint("Favorite Book * ${book.volumeInfo?.title} * Added");
       Hive.box<BookItemModel>(kBookItemBox).put(book.id, book);
     }
     emit(FavoriteState.favoriteLoadedSuccessfully(favoriteBooks));

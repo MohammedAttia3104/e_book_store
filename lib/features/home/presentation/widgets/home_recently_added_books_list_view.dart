@@ -19,10 +19,10 @@ class HomeRecentlyAddedBooksListView extends StatelessWidget {
       scrollDirection: Axis.vertical,
       itemBuilder: (context, index) {
         return RecentlyAddedBookItem(
-          itemImage: books[index].volumeInfo.imageLinks.thumbnail,
-          itemTitle: books[index].volumeInfo.title,
-          itemAuthor: books[index].volumeInfo.authors,
-          itemDescription: books[index].volumeInfo.description,
+          itemImage: books[index].volumeInfo?.imageLinks?.thumbnail,
+          itemTitle: books[index].volumeInfo?.title,
+          itemAuthor: books[index].volumeInfo?.authors,
+          itemDescription: books[index].volumeInfo?.description,
           itemId: books[index].id,
         );
       },

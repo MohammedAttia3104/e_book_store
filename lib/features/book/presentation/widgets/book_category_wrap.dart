@@ -32,7 +32,7 @@ class BookCategoryWrap extends StatelessWidget {
   }
 
   Widget _getBookCategorySuccessData(BookItemModel book) {
-    List<String>? loadedCategories = book.volumeInfo.categories;
+    List<String>? loadedCategories = book.volumeInfo?.categories;
     if (loadedCategories == null || loadedCategories.isEmpty) {
       return const SizedBox.shrink();
     }
