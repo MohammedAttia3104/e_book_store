@@ -5,4 +5,5 @@ abstract class Routes {
   static const String categoryScreen = '/category';
   static const String downloadScreen = '/download';
   static const String favoriteScreen = '/favorite';
+  static const String searchScreen = '/search';
 }

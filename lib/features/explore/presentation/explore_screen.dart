@@ -27,14 +27,14 @@ class ExploreScreenContent extends StatefulWidget {
 
 class _ExploreScreenContentState extends State<ExploreScreenContent> {
   final List<String> categories = [
-    "True Crime",
-    "Humor",
-    "Biography & Autobiography",
-    "Family & Relationships",
-    "Computers",
-    "Cooking",
-    "Social Science",
-    "Political Science",
+    // "True Crime",
+    // "Humor",
+    // "Biography & Autobiography",
+    // "Family & Relationships",
+    // "Computers",
+    // "Cooking",
+    // "Social Science",
+    // "Political Science",
   ];
 
   bool _isLoading = true;
@@ -72,27 +72,24 @@ class _ExploreScreenContentState extends State<ExploreScreenContent> {
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: categories
-                .map((category) => _buildCategorySection(category))
-                .toList(),
-          ),
-        ),
-      ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: categories
+                      .map((category) => _buildCategorySection(category))
+                      .toList(),
+                ),
+              ),
+            ),
     );
   }
 
   Widget _buildCategorySection(String category) {
     return BlocProvider(
       create: (context) =>
-      sl<ExploreCubit>()..fetchExploredCategories(category: category),
+          sl<ExploreCubit>()..fetchExploredCategories(category: category),
       child: CategorySection(category: category),
     );
   }
 }
-
-
-

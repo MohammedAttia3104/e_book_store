@@ -5,6 +5,8 @@ import 'package:e_book_store/features/book/presentation/controllers/book_cubit.d
 import 'package:e_book_store/features/category/presentation/category_screen.dart';
 import 'package:e_book_store/features/favorite/presentation/favorite_screen.dart';
 import 'package:e_book_store/features/home/presentation/controllers/home_cubit.dart';
+import 'package:e_book_store/features/search/presentation/controllers/search_cubit.dart';
+import 'package:e_book_store/features/search/presentation/search_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +60,13 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const FavoriteScreen(),
         );
-
+      case Routes.searchScreen:
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider<SearchCubit>(
+            create: (_) => sl<SearchCubit>(),
+            child: const SearchScreen(),
+          ),
+        );
       default:
         return null;
     }
