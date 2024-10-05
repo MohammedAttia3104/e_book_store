@@ -55,151 +55,154 @@ class BookScreenLoadingState extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Skeletonizer(
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  FancyShimmerImage(
-                    imageUrl: '',
-                    errorWidget: const Icon(Icons.error),
-                    height: 250.h,
-                    width: MediaQuery.of(context).size.width * 0.4,
-                    boxFit: BoxFit.contain,
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 15.h),
-                        const Text('loading...'),
-                        const Text('loading...'),
-                        SizedBox(height: 5.h),
-                        Wrap(
-                          spacing: 10,
-                          runSpacing: 5,
-                          children: uniqueCategories.map(
-                            (category) {
-                              return BlocBuilder<AppThemeCubit, AppThemeState>(
-                                builder: (context, state) {
-                                  final isDarkTheme =
-                                      state is AppThemeDarkState;
-                                  return Container(
-                                    alignment: Alignment.center,
-                                    height: 40.h,
-                                    decoration: BoxDecoration(
-                                      color: !isDarkTheme
-                                          ? AppColors.whiteColor
-                                          : AppColors.blackColor,
-                                      borderRadius: BorderRadius.circular(20.r),
-                                      border: Border.all(
-                                        color: AppColors.mainBlue,
-                                        width: 2.r,
+        child: Padding(
+          padding: EdgeInsets.only(top: 10.h, right: 16.w, left: 16.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Skeletonizer(
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FancyShimmerImage(
+                      imageUrl: '',
+                      errorWidget: const Icon(Icons.error),
+                      height: 250.h,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                      boxFit: BoxFit.contain,
+                    ),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(height: 15.h),
+                          const Text('loading...'),
+                          const Text('loading...'),
+                          SizedBox(height: 5.h),
+                          Wrap(
+                            spacing: 10,
+                            runSpacing: 5,
+                            children: uniqueCategories.map(
+                              (category) {
+                                return BlocBuilder<AppThemeCubit, AppThemeState>(
+                                  builder: (context, state) {
+                                    final isDarkTheme =
+                                        state is AppThemeDarkState;
+                                    return Container(
+                                      alignment: Alignment.center,
+                                      height: 40.h,
+                                      decoration: BoxDecoration(
+                                        color: !isDarkTheme
+                                            ? AppColors.whiteColor
+                                            : AppColors.blackColor,
+                                        borderRadius: BorderRadius.circular(20.r),
+                                        border: Border.all(
+                                          color: AppColors.mainBlue,
+                                          width: 2.r,
+                                        ),
                                       ),
-                                    ),
-                                    child: Text(
-                                      category,
-                                      style: AppStyles.font14BlueBold,
-                                      textAlign: TextAlign.center,
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ).toList(),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            verticalSpace(20),
-            Skeletonizer(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16).w,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Books Description',
-                      style: TextStyle(fontSize: 24.sp),
-                    ),
-                    const Divider(color: Colors.grey, thickness: 1),
-                    Text('episode: loading...' * 20),
-                    SizedBox(height: 10.h),
-                    const ExpandableText(text: '', maxLines: 6),
-                  ],
-                ),
-              ),
-            ),
-            verticalSpace(20),
-            Skeletonizer(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16).w,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text('Product Details', style: AppStyles.font24BlueBold),
-                    const Divider(color: Colors.grey, thickness: 1),
-                    verticalSpace(10),
-                    Text('Publisher: Loading...' * 2),
-                    verticalSpace(5),
-                    Text('Publisher: Loading...' * 2),
-                    verticalSpace(5),
-                    Text('Publisher: Loading...' * 2),
-                    verticalSpace(5),
-                    Text('Publisher: Loading...' * 2),
-                    verticalSpace(5),
-                    Text('Publisher: Loading...' * 2),
-                  ],
-                ),
-              ),
-            ),
-            verticalSpace(20),
-            Skeletonizer(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      alignment: Alignment.center,
-                      backgroundColor: AppColors.mainColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
+                                      child: Text(
+                                        category,
+                                        style: AppStyles.font14BlueBold,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ).toList(),
+                          ),
+                        ],
                       ),
                     ),
-                    onPressed: () {},
-                    child: Text(
-                      'Read Previews',
-                      style: AppStyles.font16WhiteMedium.copyWith(
+                  ],
+                ),
+              ),
+              verticalSpace(20),
+              Skeletonizer(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16).w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Books Description',
+                        style: TextStyle(fontSize: 24.sp),
+                      ),
+                      const Divider(color: Colors.grey, thickness: 1),
+                      Text('episode: loading...' * 20),
+                      SizedBox(height: 10.h),
+                      const ExpandableText(text: '', maxLines: 6),
+                    ],
+                  ),
+                ),
+              ),
+              verticalSpace(20),
+              Skeletonizer(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16).w,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Product Details', style: AppStyles.font24BlueBold),
+                      const Divider(color: Colors.grey, thickness: 1),
+                      verticalSpace(10),
+                      Text('Publisher: Loading...' * 2),
+                      verticalSpace(5),
+                      Text('Publisher: Loading...' * 2),
+                      verticalSpace(5),
+                      Text('Publisher: Loading...' * 2),
+                      verticalSpace(5),
+                      Text('Publisher: Loading...' * 2),
+                      verticalSpace(5),
+                      Text('Publisher: Loading...' * 2),
+                    ],
+                  ),
+                ),
+              ),
+              verticalSpace(20),
+              Skeletonizer(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        alignment: Alignment.center,
+                        backgroundColor: AppColors.mainColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: Text(
+                        'Read Previews',
+                        style: AppStyles.font16WhiteMedium.copyWith(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    horizontalSpace(10),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        alignment: Alignment.center,
+                        backgroundColor: AppColors.mainColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.r),
+                        ),
+                      ),
+                      onPressed: () {},
+                      child: const Icon(
+                        Icons.download,
                         color: Colors.black,
                       ),
                     ),
-                  ),
-                  horizontalSpace(10),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      alignment: Alignment.center,
-                      backgroundColor: AppColors.mainColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.r),
-                      ),
-                    ),
-                    onPressed: () {},
-                    child: const Icon(
-                      Icons.download,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            verticalSpace(30),
-          ],
+              verticalSpace(30),
+            ],
+          ),
         ),
       ),
     );

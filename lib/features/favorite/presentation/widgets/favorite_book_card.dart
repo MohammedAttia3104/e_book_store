@@ -51,7 +51,7 @@ class FavoriteBookCard extends StatelessWidget {
                       builder: (context, state) {
                         final isDarkTheme = state is AppThemeDarkState;
                         return Text(
-                          book.volumeInfo?.title ?? '',
+                          book.volumeInfo?.title ?? 'No Title',
                           style: AppStyles.font24BlackBold.copyWith(
                             fontSize: 20.sp,
                             color: isDarkTheme
@@ -64,7 +64,7 @@ class FavoriteBookCard extends StatelessWidget {
                       },
                     ),
                     verticalSpace(4),
-                    if (!book.volumeInfo!.authors!.isNullOrEmptyList())
+                    if (book.volumeInfo?.authors?.isNotEmpty ?? false)
                       Text(
                         'by ${book.volumeInfo?.authors?.first ?? 'N/A'}',
                         style: AppStyles.font16GrayBold,

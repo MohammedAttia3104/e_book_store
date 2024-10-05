@@ -11,6 +11,9 @@ import '../../features/book/presentation/controllers/book_cubit.dart';
 import '../../features/home/data/data_sources/home_remote_data_source.dart';
 import '../../features/home/data/repositories/home_repository.dart';
 import '../../features/home/presentation/controllers/home_cubit.dart';
+import '../../features/search/data/data_source/search_remote_data_source.dart';
+import '../../features/search/data/repository/search_repository.dart';
+import '../../features/search/presentation/controllers/search_cubit.dart';
 import '../theming/controllers/app_theme_cubit.dart';
 
 final GetIt sl = GetIt.instance;
@@ -48,4 +51,15 @@ void setUpServiceLocator() {
   );
 
   sl.registerFactory<ExploreCubit>(() => ExploreCubit(sl()));
+
+//search
+  sl.registerLazySingleton<SearchRemoteDataSource>(
+    () => SearchRemoteDataSource(sl()),
+  );
+
+  sl.registerLazySingleton<SearchRepository>(
+    () => SearchRepositoryImpl(sl()),
+  );
+
+  sl.registerFactory<SearchCubit>(() => SearchCubit(sl()));
 }
