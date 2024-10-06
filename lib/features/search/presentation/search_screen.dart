@@ -3,10 +3,13 @@ import 'package:e_book_store/core/extensions/navigation_extension.dart';
 import 'package:e_book_store/core/theming/font_weight_helper.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
 import 'package:e_book_store/features/search/presentation/widgets/search_book_item.dart';
+import 'package:e_book_store/features/search/presentation/widgets/search_micro_phone_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 import '../../../core/theming/app_colors.dart';
 import '../../../core/theming/app_strings.dart';
@@ -28,6 +31,7 @@ class _SearchScreenState extends State<SearchScreen> {
   final _formKey = GlobalKey<FormState>();
   final ScrollController _scrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
+  bool _isListening = false;
 
   @override
   void initState() {
@@ -49,7 +53,9 @@ class _SearchScreenState extends State<SearchScreen> {
 
   void _submitSearch(BuildContext context) {
     if (_formKey.currentState?.validate() ?? false) {
-      context.read<SearchCubit>().searchAboutBooks(_searchController.text);
+      final encodedQuery =
+          Uri.encodeQueryComponent(_searchController.text.toLowerCase());
+      context.read<SearchCubit>().searchAboutBooks(encodedQuery);
     }
   }
 
@@ -58,6 +64,16 @@ class _SearchScreenState extends State<SearchScreen> {
         _scrollController.position.maxScrollExtent * 0.7) {
       context.read<SearchCubit>().loadMoreBooks(_searchController.text);
     }
+  }
+
+  void _onListeningChanged(bool isListening) {
+    setState(() {
+      _isListening = isListening;
+    });
+  }
+
+  void _onStopListening() {
+    _submitSearch(context);
   }
 
   @override
@@ -78,27 +94,39 @@ class _SearchScreenState extends State<SearchScreen> {
           icon: const Icon(Icons.arrow_back_ios_new),
         ),
       ),
-      body: BlocBuilder<SearchCubit, SearchState>(
-        builder: (context, state) {
-          return SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0).r,
-              child: Column(
-                children: [
-                  _buildSearchForm(),
-                  verticalSpace(20),
-                  if (state is SearchLoadingState)
-                    const Center(child: CircularProgressIndicator()),
-                  if (state is SearchSuccessState ||
-                      state is SearchLoadingMoreState)
-                    _buildBookList(state),
-                  if (state is SearchFailureState)
-                    _buildErrorMessage(state.message),
-                ],
+      body: Stack(
+        children: [
+          BlocBuilder<SearchCubit, SearchState>(
+            builder: (context, state) {
+              return SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0).r,
+                  child: Column(
+                    children: [
+                      _buildSearchForm(),
+                      verticalSpace(20),
+                      // if (state is SearchLoadingState)
+                      //   const SizedBox.shrink(), //TODO() => Skeletonizer(),
+                      if (state is SearchSuccessState ||
+                          state is SearchLoadingMoreState)
+                        _buildBookList(state),
+                      if (state is SearchFailureState)
+                        _buildErrorMessage(state.message),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
+          if (_isListening)
+            Center(
+              child: Lottie.asset(
+                'assets/lottie/wave.json',
+                width: 200,
+                height: 200,
               ),
             ),
-          );
-        },
+        ],
       ),
     );
   }
@@ -117,9 +145,10 @@ class _SearchScreenState extends State<SearchScreen> {
           return null;
         },
         hintStyle: AppStyles.font20GrayRegular,
-        suffixIcon: Container(
-          margin: const EdgeInsets.all(12).h,
-          child: SvgPicture.asset(Assets.svgsMicrophone),
+        suffixIcon: SearchMicroPhoneButton(
+          searchController: _searchController,
+          onListeningChanged: _onListeningChanged,
+          onStopListening: _onStopListening,
         ),
         prefixIcon: Container(
           margin: const EdgeInsets.all(12).h,
@@ -140,22 +169,28 @@ class _SearchScreenState extends State<SearchScreen> {
         ? state.books
         : (state as SearchLoadingMoreState).books;
 
-    return Expanded(
-      child: ListView.separated(
-        controller: _scrollController,
-        shrinkWrap: true,
-        scrollDirection: Axis.vertical,
-        itemBuilder: (context, index) {
-          if (state is SearchLoadingMoreState && index == books.length) {
-            return const Center(child: CircularProgressIndicator());
-          }
-          return _buildBookItem(books[index]);
-        },
-        separatorBuilder: (context, index) => verticalSpace(12),
-        itemCount:
-            state is SearchLoadingMoreState ? books.length + 1 : books.length,
-      ),
-    );
+    return !_isListening
+        ? Expanded(
+            child: Skeletonizer(
+              enabled: state is SearchLoadingState,
+              child: ListView.separated(
+                controller: _scrollController,
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
+                itemBuilder: (context, index) {
+                  if (state is SearchLoadingMoreState && index == books.length) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  return _buildBookItem(books[index]);
+                },
+                separatorBuilder: (context, index) => verticalSpace(12),
+                itemCount: state is SearchLoadingMoreState
+                    ? books.length + 1
+                    : books.length,
+              ),
+            ),
+          )
+        : const SizedBox.shrink();
   }
 
   Widget _buildBookItem(BookItemModel book) {

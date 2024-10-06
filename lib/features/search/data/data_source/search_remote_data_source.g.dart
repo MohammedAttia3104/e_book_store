@@ -28,10 +28,10 @@ class _SearchRemoteDataSource implements SearchRemoteDataSource {
     String query,
     int startIndex,
     int maxResults,
-    String orderBy,
-    String printType,
-    String langRestrict,
-    String filter,
+    String? orderBy,
+    String? printType,
+    String? langRestrict,
+    String? filter,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
@@ -43,6 +43,7 @@ class _SearchRemoteDataSource implements SearchRemoteDataSource {
       r'langRestrict': langRestrict,
       r'filter': filter,
     };
+    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _options = _setStreamType<BooksModel>(Options(

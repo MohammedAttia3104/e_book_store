@@ -17,9 +17,9 @@ abstract class SearchRemoteDataSource {
     @Query('q') String query,
     @Query('startIndex') int startIndex,
     @Query('maxResults') int maxResults,
-    @Query('orderBy') String orderBy,
-    @Query('printType') String printType,
-    @Query('langRestrict') String langRestrict,
-    @Query('filter') String filter,
+    @Query('orderBy') String? orderBy,
+    @Query('printType') String? printType,
+    @Query('langRestrict') String? langRestrict,
+    @Query('filter') String? filter,
   );
 }
