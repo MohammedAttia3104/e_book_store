@@ -5,7 +5,8 @@ import 'package:e_book_store/features/search/data/models/search_parameters.dart'
 import '../data_source/search_remote_data_source.dart';
 
 abstract class SearchRepository {
-  Future<ApiResult<List<BookItemModel>>> getSearchedBooks(SearchParameters searchParameters);
+  Future<ApiResult<List<BookItemModel>>> getSearchedBooks(
+      SearchParameters searchParameters);
 }
 
 class SearchRepositoryImpl implements SearchRepository {
@@ -14,7 +15,8 @@ class SearchRepositoryImpl implements SearchRepository {
   SearchRepositoryImpl(this.searchRemoteDataSource);
 
   @override
-  Future<ApiResult<List<BookItemModel>>> getSearchedBooks(SearchParameters searchParameters) async {
+  Future<ApiResult<List<BookItemModel>>> getSearchedBooks(
+      SearchParameters searchParameters) async {
     try {
       final books = await searchRemoteDataSource.searchBooks(
         searchParameters.query,
