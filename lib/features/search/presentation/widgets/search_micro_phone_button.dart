@@ -83,7 +83,9 @@ class _SearchMicroPhoneButtonState extends State<SearchMicroPhoneButton> {
     return GestureDetector(
       onTap: _isListening ? _stopListening : _startListening,
       child: Container(
-        margin: const EdgeInsets.all(12).h,
+        height: 30.h,
+        width: 30.w,
+        margin: const EdgeInsets.all(4).h,
         child: SvgPicture.asset(
           Assets.svgsMicrophone,
           color: _iconColor,

@@ -17,4 +17,6 @@ class SearchState with _$SearchState {
   const factory SearchState.searchLoadingMoreState({
     required List<BookItemModel> books,
   }) = SearchLoadingMoreState;
+
+  const factory SearchState.searchEmptyState() = SearchEmptyState;
 }

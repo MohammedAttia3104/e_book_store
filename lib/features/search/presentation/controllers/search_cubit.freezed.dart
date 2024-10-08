@@ -23,6 +23,7 @@ mixin _$SearchState {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +33,7 @@ mixin _$SearchState {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +43,7 @@ mixin _$SearchState {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -52,6 +55,7 @@ mixin _$SearchState {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$SearchState {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +75,7 @@ mixin _$SearchState {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +142,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) {
     return initial();
   }
@@ -148,6 +155,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) {
     return initial?.call();
   }
@@ -160,6 +168,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -177,6 +186,7 @@ class _$InitialImpl implements _Initial {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) {
     return initial(this);
   }
@@ -189,6 +199,7 @@ class _$InitialImpl implements _Initial {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) {
     return initial?.call(this);
   }
@@ -201,6 +212,7 @@ class _$InitialImpl implements _Initial {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -257,6 +269,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) {
     return searchLoadingState();
   }
@@ -269,6 +282,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) {
     return searchLoadingState?.call();
   }
@@ -281,6 +295,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchLoadingState != null) {
@@ -298,6 +313,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) {
     return searchLoadingState(this);
   }
@@ -310,6 +326,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) {
     return searchLoadingState?.call(this);
   }
@@ -322,6 +339,7 @@ class _$SearchLoadingStateImpl implements SearchLoadingState {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchLoadingState != null) {
@@ -412,6 +430,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) {
     return searchSuccessState(books);
   }
@@ -424,6 +443,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) {
     return searchSuccessState?.call(books);
   }
@@ -436,6 +456,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchSuccessState != null) {
@@ -453,6 +474,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) {
     return searchSuccessState(this);
   }
@@ -465,6 +487,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) {
     return searchSuccessState?.call(this);
   }
@@ -477,6 +500,7 @@ class _$SearchSuccessStateImpl implements SearchSuccessState {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchSuccessState != null) {
@@ -566,6 +590,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) {
     return searchFailureState(message);
   }
@@ -578,6 +603,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) {
     return searchFailureState?.call(message);
   }
@@ -590,6 +616,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchFailureState != null) {
@@ -607,6 +634,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) {
     return searchFailureState(this);
   }
@@ -619,6 +647,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) {
     return searchFailureState?.call(this);
   }
@@ -631,6 +660,7 @@ class _$SearchFailureStateImpl implements SearchFailureState {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchFailureState != null) {
@@ -729,6 +759,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     required TResult Function(List<BookItemModel> books) searchSuccessState,
     required TResult Function(String message) searchFailureState,
     required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
   }) {
     return searchLoadingMoreState(books);
   }
@@ -741,6 +772,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     TResult? Function(List<BookItemModel> books)? searchSuccessState,
     TResult? Function(String message)? searchFailureState,
     TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
   }) {
     return searchLoadingMoreState?.call(books);
   }
@@ -753,6 +785,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     TResult Function(List<BookItemModel> books)? searchSuccessState,
     TResult Function(String message)? searchFailureState,
     TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchLoadingMoreState != null) {
@@ -770,6 +803,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     required TResult Function(SearchFailureState value) searchFailureState,
     required TResult Function(SearchLoadingMoreState value)
         searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
   }) {
     return searchLoadingMoreState(this);
   }
@@ -782,6 +816,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     TResult? Function(SearchSuccessState value)? searchSuccessState,
     TResult? Function(SearchFailureState value)? searchFailureState,
     TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
   }) {
     return searchLoadingMoreState?.call(this);
   }
@@ -794,6 +829,7 @@ class _$SearchLoadingMoreStateImpl implements SearchLoadingMoreState {
     TResult Function(SearchSuccessState value)? searchSuccessState,
     TResult Function(SearchFailureState value)? searchFailureState,
     TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
     required TResult orElse(),
   }) {
     if (searchLoadingMoreState != null) {
@@ -812,4 +848,131 @@ abstract class SearchLoadingMoreState implements SearchState {
   @JsonKey(ignore: true)
   _$$SearchLoadingMoreStateImplCopyWith<_$SearchLoadingMoreStateImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$SearchEmptyStateImplCopyWith<$Res> {
+  factory _$$SearchEmptyStateImplCopyWith(_$SearchEmptyStateImpl value,
+          $Res Function(_$SearchEmptyStateImpl) then) =
+      __$$SearchEmptyStateImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$SearchEmptyStateImplCopyWithImpl<$Res>
+    extends _$SearchStateCopyWithImpl<$Res, _$SearchEmptyStateImpl>
+    implements _$$SearchEmptyStateImplCopyWith<$Res> {
+  __$$SearchEmptyStateImplCopyWithImpl(_$SearchEmptyStateImpl _value,
+      $Res Function(_$SearchEmptyStateImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$SearchEmptyStateImpl implements SearchEmptyState {
+  const _$SearchEmptyStateImpl();
+
+  @override
+  String toString() {
+    return 'SearchState.searchEmptyState()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$SearchEmptyStateImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() searchLoadingState,
+    required TResult Function(List<BookItemModel> books) searchSuccessState,
+    required TResult Function(String message) searchFailureState,
+    required TResult Function(List<BookItemModel> books) searchLoadingMoreState,
+    required TResult Function() searchEmptyState,
+  }) {
+    return searchEmptyState();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? searchLoadingState,
+    TResult? Function(List<BookItemModel> books)? searchSuccessState,
+    TResult? Function(String message)? searchFailureState,
+    TResult? Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult? Function()? searchEmptyState,
+  }) {
+    return searchEmptyState?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? searchLoadingState,
+    TResult Function(List<BookItemModel> books)? searchSuccessState,
+    TResult Function(String message)? searchFailureState,
+    TResult Function(List<BookItemModel> books)? searchLoadingMoreState,
+    TResult Function()? searchEmptyState,
+    required TResult orElse(),
+  }) {
+    if (searchEmptyState != null) {
+      return searchEmptyState();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(SearchLoadingState value) searchLoadingState,
+    required TResult Function(SearchSuccessState value) searchSuccessState,
+    required TResult Function(SearchFailureState value) searchFailureState,
+    required TResult Function(SearchLoadingMoreState value)
+        searchLoadingMoreState,
+    required TResult Function(SearchEmptyState value) searchEmptyState,
+  }) {
+    return searchEmptyState(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(SearchLoadingState value)? searchLoadingState,
+    TResult? Function(SearchSuccessState value)? searchSuccessState,
+    TResult? Function(SearchFailureState value)? searchFailureState,
+    TResult? Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult? Function(SearchEmptyState value)? searchEmptyState,
+  }) {
+    return searchEmptyState?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(SearchLoadingState value)? searchLoadingState,
+    TResult Function(SearchSuccessState value)? searchSuccessState,
+    TResult Function(SearchFailureState value)? searchFailureState,
+    TResult Function(SearchLoadingMoreState value)? searchLoadingMoreState,
+    TResult Function(SearchEmptyState value)? searchEmptyState,
+    required TResult orElse(),
+  }) {
+    if (searchEmptyState != null) {
+      return searchEmptyState(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class SearchEmptyState implements SearchState {
+  const factory SearchEmptyState() = _$SearchEmptyStateImpl;
 }
