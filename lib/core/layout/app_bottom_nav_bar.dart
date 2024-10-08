@@ -1,6 +1,4 @@
 import 'package:e_book_store/core/layout/controllers/bottom_nav_bar_cubit.dart';
-import 'package:e_book_store/features/home/presentation/controllers/home_cubit.dart';
-import 'package:e_book_store/features/home/presentation/controllers/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
