@@ -34,7 +34,7 @@ class SettingsScreenBody extends StatelessWidget {
               'Downloads',
               style: AppStyles.font20Bold,
             ),
-            subtitle: const Text('10 items'),
+            subtitle: const Text('0 items'),
           ),
           verticalSpace(12),
           ListTile(

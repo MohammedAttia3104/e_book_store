@@ -1,7 +1,10 @@
+import 'package:e_book_store/core/theming/controllers/app_theme_state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/app_colors.dart';
+import '../../../../core/theming/controllers/app_theme_cubit.dart';
 import '../../../../core/theming/font_weight_helper.dart';
 import '../../../../core/utils/spacing.dart';
 
@@ -52,12 +55,22 @@ class _FilterButtonState extends State<FilterButton> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              widget.label,
-              style: TextStyle(
-                fontSize: 16.sp,
-                fontWeight: FontWeightHelper.medium,
-              ),
+            BlocBuilder<AppThemeCubit, AppThemeState>(
+              builder: (context, state) {
+                final isDarkTheme = state is AppThemeDarkState;
+
+                return Text(
+                  widget.label,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeightHelper.medium,
+                  ).copyWith(
+                    color: !isDarkTheme
+                        ? AppColors.whiteColor
+                        : AppColors.blackColor,
+                  ),
+                );
+              },
             ),
             IconButton(
               icon: const Icon(Icons.clear, color: AppColors.mainBlue),

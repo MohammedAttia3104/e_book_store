@@ -1,8 +1,11 @@
+import 'package:e_book_store/core/enums/theme_states.dart';
 import 'package:e_book_store/core/extensions/extensions.dart';
 import 'package:e_book_store/core/extensions/navigation_extension.dart';
 import 'package:e_book_store/core/theming/app_colors.dart';
 import 'package:e_book_store/core/theming/app_strings.dart';
 import 'package:e_book_store/core/theming/app_styles.dart';
+import 'package:e_book_store/core/theming/controllers/app_theme_cubit.dart';
+import 'package:e_book_store/core/theming/controllers/app_theme_state.dart';
 import 'package:e_book_store/core/theming/font_weight_helper.dart';
 import 'package:e_book_store/core/utils/spacing.dart';
 import 'package:e_book_store/core/widgets/app_text_form_field.dart';
@@ -149,8 +152,7 @@ class _SearchScreenState extends State<SearchScreen> {
               return SafeArea(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0).r,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
+                  child: ListView(
                     children: [
                       _buildSearchForm(),
                       verticalSpace(20),
@@ -275,12 +277,21 @@ class _SearchScreenState extends State<SearchScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(
-                'Filters',
-                style: TextStyle(
-                  fontSize: 18.sp,
-                  fontWeight: FontWeightHelper.bold,
-                ),
+              BlocBuilder<AppThemeCubit, AppThemeState>(
+                builder: (context, state) {
+                  final isDarkTheme = state is AppThemeDarkState;
+                  return Text(
+                    'Filters',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeightHelper.bold,
+                    ).copyWith(
+                      color: !isDarkTheme
+                          ? AppColors.whiteColor
+                          : AppColors.blackColor,
+                    ),
+                  );
+                },
               ),
               IconButton(
                 icon: const Icon(Icons.clear_all, color: AppColors.mainBlue),

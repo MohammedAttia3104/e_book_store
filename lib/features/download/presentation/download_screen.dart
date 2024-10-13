@@ -26,8 +26,16 @@ class DownloadScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text('Downloads'),
+      body:  Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0,vertical: 16.0).h,
+        child: Center(
+          child: Text('Not Available to Download Now!!!\nWill Added Later :)',style: TextStyle(
+            fontSize: 24.sp,
+            fontWeight: FontWeightHelper.medium,
+          ),
+          textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }

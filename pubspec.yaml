@@ -84,6 +84,9 @@ dependencies:
   speech_to_text: ^7.0.0
   # for implementation of a Lottie player.
   lottie: ^3.1.2
+  # Read EBooks
+#  epub_viewer:
+  easy_pdf_viewer: ^1.0.8
 
 
 
